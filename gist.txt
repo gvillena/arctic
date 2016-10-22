@@ -1,0 +1,6 @@
+
+
+Dim stdLst = StudentIO.GetStudents("visual162-lst.txt")
+Dim json = JsonConvert.SerializeObject(stdLst, Formatting.Indented)
+Console.WriteLine(json)
+Return 0
