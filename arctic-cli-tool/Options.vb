@@ -26,6 +26,22 @@ End Class
 Class RunOptions
 End Class
 
+<CommandLine.Verb("pweb162", HelpText:="TODO")>
+Class Pweb162Options
+End Class
+
+<CommandLine.Verb("sim162", HelpText:="TODO")>
+Class Sim162Options
+End Class
+
+<CommandLine.Verb("so162", HelpText:="TODO")>
+Class So162Options
+End Class
+
+<CommandLine.Verb("visual162", HelpText:="TODO")>
+Class Visual162Options
+End Class
+
 <CommandLine.Verb("list", HelpText:="List all students.")>
 Class ListOptions
 End Class

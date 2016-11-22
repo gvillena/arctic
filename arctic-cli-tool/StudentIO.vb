@@ -1,4 +1,6 @@
-﻿Imports System.Text
+﻿Imports System.IO
+Imports System.Text
+Imports Newtonsoft.Json
 
 Public Class StudentIO
 
@@ -75,6 +77,86 @@ Public Class StudentIO
         'Next
         Return lst
     End Function
+
+    Public Shared Function GetStudentsFromTextFile(ByVal fileName As String) As List(Of Student)
+
+        Dim std As Student = Nothing
+        Dim path As String = IO.Path.Combine(My.Application.Info.DirectoryPath, fileName)
+        Dim lst As New List(Of Student)
+
+        Using MyReader As New Microsoft.VisualBasic.FileIO.TextFieldParser(path)
+
+
+            MyReader.TextFieldType = FileIO.FieldType.Delimited
+            MyReader.SetDelimiters(vbTab)
+
+            Dim currentRow As String()
+            While Not MyReader.EndOfData
+                Try
+                    currentRow = MyReader.ReadFields()
+                    std = New Student()
+                    With std
+                        .Id = currentRow.ElementAt(1)
+                        .Name = currentRow.ElementAt(2)
+                        .Grades.Add(Evaluation.P1, 0)
+                        .Grades.Add(Evaluation.EP, 0)
+                        .Grades.Add(Evaluation.P2, 0)
+                        .Grades.Add(Evaluation.EF, 0)
+                    End With
+                    lst.Add(std)
+                Catch ex As Microsoft.VisualBasic.
+                            FileIO.MalformedLineException
+                    Console.WriteLine("Line " & ex.Message &
+                    "is not valid and will be skipped.")
+                End Try
+            End While
+        End Using
+
+        'For Each s As Student In lst
+        '    Console.WriteLine("{0} {1}", CStr(s.Id), s.Name)
+        'Next
+        Return lst
+    End Function
+
+    Public Shared Function GetStudentsFromJson(ByVal fileName As String) As List(Of Student)
+
+        Dim lst As List(Of Student) = Nothing
+        Dim path As String = IO.Path.Combine(My.Application.Info.DirectoryPath, fileName)
+        Dim serializer As New JsonSerializer() With {.Formatting = Formatting.Indented}
+
+        Using file As New StreamReader(path)
+            lst = serializer.Deserialize(file, GetType(List(Of Student)))
+            If lst IsNot Nothing Then
+                Console.WriteLine("Import from file succeeded: " & lst.Count)
+            Else
+                Console.WriteLine("Import from file failed.")
+            End If
+        End Using
+
+        Return lst
+
+    End Function
+
+    Public Shared Function GetStudentsJson(ByVal fileName As String) As List(Of Student)
+
+        Dim lst As List(Of Student) = Nothing
+        'Dim std As Student = Nothing
+        Dim path As String = IO.Path.Combine(My.Application.Info.DirectoryPath, fileName)
+        Dim serializer As New JsonSerializer() With {.Formatting = Formatting.Indented}
+
+        Using file As New StreamReader(path)
+            lst = serializer.Deserialize(file, GetType(List(Of Student)))
+            If lst IsNot Nothing Then
+                Console.WriteLine("Succeed " & lst.Count)
+            Else
+                Console.WriteLine("Nothing")
+            End If
+        End Using
+
+        Return lst
+
+    End Function
+
 
     Public Shared Sub SetGrades(stdsFileName As String, testFileName As String)
 
@@ -176,14 +258,21 @@ Public Class StudentIO
                 Console.WriteLine("Ingrese sus respuestas... ")
                 Console.WriteLine()
 
-                Dim pdata = GetQuestionData("prac01.txt")
-                For Each preg In pdata
-                    Console.Write(" Respuesta " & preg.Name & ": ")
-                    Dim ansStr = Console.ReadLine()
-                    Dim ans = Convert.ToInt32(ansStr, 2)
-                    grade += IIf(ans = preg.Answer, preg.Score, 0)
-                    Console.Write(ControlChars.Cr)
-                Next
+                'Dim pdata = GetQuestionData("prac01.txt")
+                Dim pdata = GetQuestionData(eval)
+
+                Do
+                    grade = 0
+                    For Each preg In pdata
+                        Console.Write(" Respuesta " & preg.Name & ": ")
+                        Dim ansStr = Console.ReadLine()
+                        Dim ans = Convert.ToInt32(ansStr, 2)
+                        grade += IIf(ans = preg.Answer, preg.Score, 0)
+                        Console.Write(ControlChars.Cr)
+                    Next
+                    Console.Write("CONFIRMAR EVALUACION (SI/NO): ")
+                Loop While (Console.ReadLine().Trim().ToUpper() = "NO")
+
 
             Case Course.pweb162 ' TODO CalcGrade pweb162
             Case Course.so162 ' TODO CalcGrade so162
@@ -193,8 +282,6 @@ Public Class StudentIO
         Return grade
 
     End Function
-
-
 
     Private Shared Function CalcGrade(id As String, fileName As String) As Double
 
@@ -230,6 +317,77 @@ Public Class StudentIO
         Console.WriteLine("Id: " & id & " Grade: " & grade)
         Return grade
     End Function
+
+    Public Shared Function GetQuestionData(evaluation As Evaluation) As ArrayList
+
+        Dim pdata As ArrayList = Nothing
+
+        Select Case evaluation
+
+            Case Evaluation.EP
+                ' TODO Evaluation.P1
+                ' TODO Evaluation.P1 schema
+                ' TODO Evaluation.P1 modificaciones preguntas compuestas
+
+                Dim p1 = New With {Key .Name = "P1", .Answer = Alternativa.B, .Score = 0.5, .Num = 1}
+
+                Dim p2_1 = New With {Key .Name = "P2.1", .Answer = Alternativa.C, .Score = 0.25, .Num = 2}
+                Dim p2_2 = New With {Key .Name = "P2.2", .Answer = Alternativa.Proposito, .Score = 0.25, .Num = 3}
+
+                Dim p3_1 = New With {Key .Name = "P3.1", .Answer = Alternativa.D, .Score = 0.25, .Num = 4}
+                Dim p3_2 = New With {Key .Name = "P3.2", .Answer = Alternativa.Ventaja, .Score = 0.25, .Num = 5}
+
+                Dim p4_1 = New With {Key .Name = "P4.1", .Answer = Alternativa.D, .Score = 0.25, .Num = 6}
+                Dim p4_2 = New With {Key .Name = "P4.2", .Answer = Alternativa.Desventaja, .Score = 0.25, .Num = 7}
+
+                Dim p5_1 = New With {Key .Name = "P5.1", .Answer = Alternativa.NoAnswer, .Score = 0.25, .Num = 8}
+                Dim p5_2 = New With {Key .Name = "P5.2", .Answer = Alternativa.NoAnswer, .Score = 0.25, .Num = 9}
+
+                Dim p6_1 = New With {Key .Name = "P6.1", .Answer = Alternativa.C, .Score = 0.25, .Num = 10}
+                Dim p6_2 = New With {Key .Name = "P6.2", .Answer = Alternativa.OtrasCons, .Score = 0.25, .Num = 11}
+
+                Dim p7_1 = New With {Key .Name = "P7.1", .Answer = Alternativa.D, .Score = 0.25, .Num = 12}
+                Dim p7_2 = New With {Key .Name = "P7.2", .Answer = Alternativa.Proposito, .Score = 0.25, .Num = 13}
+
+                Dim p8 = New With {Key .Name = "P8", .Answer = Alternativa.A, .Score = 0.5, .Num = 14}
+                Dim p9 = New With {Key .Name = "P9", .Answer = Alternativa.C, .Score = 0.5, .Num = 15}
+
+                Dim p10_1 = New With {Key .Name = "P10.1", .Answer = Alternativa.B, .Score = 0.5, .Num = 16}
+                Dim p10_2 = New With {Key .Name = "P10.2", .Answer = Alternativa.Entidad, .Score = 0.5, .Num = 17}
+
+                Dim p11_1 = New With {Key .Name = "P11.1", .Answer = Alternativa.NoAnswer, .Score = 0.5, .Num = 18}
+                Dim p11_2 = New With {Key .Name = "P11.2", .Answer = Alternativa.NoAnswer, .Score = 0.5, .Num = 19}
+
+                Dim p12_1 = New With {Key .Name = "P12.1", .Answer = Alternativa.A, .Score = 0.5, .Num = 20}
+                Dim p12_2 = New With {Key .Name = "P12.2", .Answer = Alternativa.Recurso, .Score = 0.5, .Num = 21}
+
+                Dim p13_1 = New With {Key .Name = "P13.1", .Answer = Alternativa.C, .Score = 0.5, .Num = 22}
+                Dim p13_2 = New With {Key .Name = "P13.2", .Answer = Alternativa.Recurso, .Score = 0.5, .Num = 23}
+
+                Dim p14 = New With {Key .Name = "P14", .Answer = Alternativa.A And Alternativa.C, .Score = 1, .Num = 24}
+
+                pdata = New ArrayList({p1,
+                                        p2_1, p2_2,
+                                        p3_1, p3_2,
+                                        p4_1, p4_2,
+                                        p5_1, p5_2,
+                                        p6_1, p6_2,
+                                        p7_1, p7_2,
+                                        p8, p9,
+                                        p10_1, p10_2,
+                                        p11_1, p11_2,
+                                        p12_1, p12_2,
+                                        p13_1, p13_2,
+                                        p14})
+
+            Case Else
+                Throw New Exception("There is something wrong!") ' TODO: Not sure if is correct! 
+        End Select
+
+        Return pdata
+
+    End Function
+
 
     Public Shared Function GetQuestionData(fileName As String) As ArrayList
 
