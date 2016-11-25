@@ -400,41 +400,42 @@ Public Class StudentIO
                 ' TODO prac01.txt schema
                 ' TODO prac01.txt modificaciones preguntas compuestas
                 Dim p1 = New With {Key .Name = "P1", .Answer = Alternativa.B, .Score = 0.5, .Num = 1}
-
                 Dim p2_1 = New With {Key .Name = "P2.1", .Answer = Alternativa.C, .Score = 0.25, .Num = 2}
                 Dim p2_2 = New With {Key .Name = "P2.2", .Answer = Alternativa.Proposito, .Score = 0.25, .Num = 3}
-
                 Dim p3_1 = New With {Key .Name = "P3.1", .Answer = Alternativa.D, .Score = 0.25, .Num = 4}
                 Dim p3_2 = New With {Key .Name = "P3.2", .Answer = Alternativa.Ventaja, .Score = 0.25, .Num = 5}
-
                 Dim p4_1 = New With {Key .Name = "P4.1", .Answer = Alternativa.D, .Score = 0.25, .Num = 6}
                 Dim p4_2 = New With {Key .Name = "P4.2", .Answer = Alternativa.Desventaja, .Score = 0.25, .Num = 7}
-
                 Dim p5_1 = New With {Key .Name = "P5.1", .Answer = Alternativa.NoAnswer, .Score = 0.25, .Num = 8}
                 Dim p5_2 = New With {Key .Name = "P5.2", .Answer = Alternativa.NoAnswer, .Score = 0.25, .Num = 9}
-
                 Dim p6_1 = New With {Key .Name = "P6.1", .Answer = Alternativa.C, .Score = 0.25, .Num = 10}
                 Dim p6_2 = New With {Key .Name = "P6.2", .Answer = Alternativa.OtrasCons, .Score = 0.25, .Num = 11}
-
                 Dim p7_1 = New With {Key .Name = "P7.1", .Answer = Alternativa.D, .Score = 0.25, .Num = 12}
                 Dim p7_2 = New With {Key .Name = "P7.2", .Answer = Alternativa.Proposito, .Score = 0.25, .Num = 13}
-
                 Dim p8 = New With {Key .Name = "P8", .Answer = Alternativa.A, .Score = 0.5, .Num = 14}
                 Dim p9 = New With {Key .Name = "P9", .Answer = Alternativa.C, .Score = 0.5, .Num = 15}
-
                 Dim p10_1 = New With {Key .Name = "P10.1", .Answer = Alternativa.B, .Score = 0.5, .Num = 16}
                 Dim p10_2 = New With {Key .Name = "P10.2", .Answer = Alternativa.Entidad, .Score = 0.5, .Num = 17}
-
                 Dim p11_1 = New With {Key .Name = "P11.1", .Answer = Alternativa.NoAnswer, .Score = 0.5, .Num = 18}
                 Dim p11_2 = New With {Key .Name = "P11.2", .Answer = Alternativa.NoAnswer, .Score = 0.5, .Num = 19}
-
                 Dim p12_1 = New With {Key .Name = "P12.1", .Answer = Alternativa.A, .Score = 0.5, .Num = 20}
                 Dim p12_2 = New With {Key .Name = "P12.2", .Answer = Alternativa.Recurso, .Score = 0.5, .Num = 21}
-
                 Dim p13_1 = New With {Key .Name = "P13.1", .Answer = Alternativa.C, .Score = 0.5, .Num = 22}
                 Dim p13_2 = New With {Key .Name = "P13.2", .Answer = Alternativa.Recurso, .Score = 0.5, .Num = 23}
-
                 Dim p14 = New With {Key .Name = "P14", .Answer = Alternativa.A And Alternativa.C, .Score = 1, .Num = 24}
+
+                Dim p15 = New With {Key .Name = "P15", .Answer = Alternativa.A, .Score = 1, .Num = 25}
+                Dim p16 = New With {Key .Name = "P16", .Answer = Alternativa.D, .Score = 1, .Num = 26}
+                Dim p17 = New With {Key .Name = "P17", .Answer = Alternativa.C, .Score = 1, .Num = 27}
+                Dim p18 = New With {Key .Name = "P18", .Answer = Alternativa.B, .Score = 1, .Num = 28}
+                Dim p19 = New With {Key .Name = "P19", .Answer = Alternativa.NoAnswer, .Score = 1, .Num = 29}
+                Dim p20 = New With {Key .Name = "P20", .Answer = Alternativa.C And Alternativa.D, .Score = 1, .Num = 30}
+                Dim p21 = New With {Key .Name = "P21", .Answer = Alternativa.A And Alternativa.B And Alternativa.C And Alternativa.D, .Score = 1, .Num = 31}
+                Dim p22 = New With {Key .Name = "P22", .Answer = Alternativa.A And Alternativa.B And Alternativa.C And Alternativa.D, .Score = 1, .Num = 32}
+                Dim p23 = New With {Key .Name = "P23", .Answer = Alternativa.C, .Score = 1, .Num = 33}
+                Dim p24 = New With {Key .Name = "P24", .Answer = Alternativa.B, .Score = 1, .Num = 34}
+                Dim p25 = New With {Key .Name = "P25", .Answer = Alternativa.A, .Score = 1, .Num = 35}
+                Dim p26 = New With {Key .Name = "P26", .Answer = Alternativa.D, .Score = 1, .Num = 36}
 
                 pdata = New ArrayList({p1,
                                         p2_1, p2_2,
@@ -448,7 +449,10 @@ Public Class StudentIO
                                         p11_1, p11_2,
                                         p12_1, p12_2,
                                         p13_1, p13_2,
-                                        p14})
+                                        p14, p15, p16,
+                                        p17, p18, p19,
+                                        p20, p21, p22,
+                                        p23, p24, p25, p26})
 
             Case "exprcl.txt"
                 ' TODO exprcl.txt
