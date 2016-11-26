@@ -1,0 +1,453 @@
+[
+  {
+    "Id": "2014110748",
+    "Name": "ALVARADO TORRES, GIANFRANCO ARNALDO",
+    "Grades": {
+      "P1": 11.0,
+      "EP": 13.25,
+      "P2": 7.9000000000000012,
+      "EF": 0.0
+    },
+    "FinalGrade": 8.0375
+  },
+  {
+    "Id": "2013208176",
+    "Name": "ALVARADO VILLALOBOS, BRYAN ANTONIO",
+    "Grades": {
+      "P1": 14.0,
+      "EP": 12.0,
+      "P2": 7.0000000000000009,
+      "EF": 0.0
+    },
+    "FinalGrade": 8.25
+  },
+  {
+    "Id": "2013106771",
+    "Name": "ALVITES CAYSAHUANA, SYLVIA LISSETH",
+    "Grades": {
+      "P1": 10.0,
+      "EP": 10.5,
+      "P2": 7.2000000000000011,
+      "EF": 0.0
+    },
+    "FinalGrade": 6.9250000000000007
+  },
+  {
+    "Id": "2012222575",
+    "Name": "AROSTE ORE, EDDY SANTIAGO",
+    "Grades": {
+      "P1": 11.0,
+      "EP": 7.0,
+      "P2": 4.6,
+      "EF": 0.0
+    },
+    "FinalGrade": 5.65
+  },
+  {
+    "Id": "2013101368",
+    "Name": "AYALA FLORES, RENZO ALEXANDER",
+    "Grades": {
+      "P1": 11.0,
+      "EP": 8.0,
+      "P2": 5.9000000000000012,
+      "EF": 0.0
+    },
+    "FinalGrade": 6.2250000000000005
+  },
+  {
+    "Id": "2014110395",
+    "Name": "BARRON LUCCIONI, EDUARDO MANUEL",
+    "Grades": {
+      "P1": 13.0,
+      "EP": 10.5,
+      "P2": 8.2000000000000011,
+      "EF": 0.0
+    },
+    "FinalGrade": 7.9250000000000007
+  },
+  {
+    "Id": "2014110564",
+    "Name": "BASTIDAS ZAMORA, JEISON BRYAM",
+    "Grades": {
+      "P1": 17.0,
+      "EP": 7.5,
+      "P2": 6.7000000000000011,
+      "EF": 0.0
+    },
+    "FinalGrade": 7.8000000000000007
+  },
+  {
+    "Id": "2011168208",
+    "Name": "BEJARANO LUJAN, CESAR MOISES",
+    "Grades": {
+      "P1": 8.0,
+      "EP": 7.75,
+      "P2": 7.9000000000000012,
+      "EF": 0.0
+    },
+    "FinalGrade": 5.9125000000000005
+  },
+  {
+    "Id": "2011157546",
+    "Name": "CABRERA TENICELA, FERNANDO STEWART",
+    "Grades": {
+      "P1": 13.0,
+      "EP": 7.5,
+      "P2": 6.5000000000000009,
+      "EF": 0.0
+    },
+    "FinalGrade": 6.75
+  },
+  {
+    "Id": "2014110576",
+    "Name": "CASTRO NAJARRO, DANY BLADIMIR",
+    "Grades": {
+      "P1": 7.0,
+      "EP": 9.0,
+      "P2": 8.2000000000000011,
+      "EF": 0.0
+    },
+    "FinalGrade": 6.0500000000000007
+  },
+  {
+    "Id": "2014113684",
+    "Name": "CAYCHO SANCHEZ, RICHARD ESTEBAN",
+    "Grades": {
+      "P1": 7.0,
+      "EP": 8.0,
+      "P2": 7.4000000000000012,
+      "EF": 0.0
+    },
+    "FinalGrade": 5.6000000000000005
+  },
+  {
+    "Id": "2011163724",
+    "Name": "CHOQUEVILCA ROCA, WALTHER",
+    "Grades": {
+      "P1": 12.0,
+      "EP": 7.0,
+      "P2": 5.9,
+      "EF": 0.0
+    },
+    "FinalGrade": 6.225
+  },
+  {
+    "Id": "2009149049",
+    "Name": "COBEÑAS HUAMANI, CHRISTIAN JESUS",
+    "Grades": {
+      "P1": 14.0,
+      "EP": 5.25,
+      "P2": 3.6,
+      "EF": 0.0
+    },
+    "FinalGrade": 5.7125
+  },
+  {
+    "Id": "2014109435",
+    "Name": "ESPINOZA HINOSTROZA, DAVID SEBASTIAN",
+    "Grades": {
+      "P1": 9.0,
+      "EP": 10.75,
+      "P2": 7.9000000000000012,
+      "EF": 0.0
+    },
+    "FinalGrade": 6.9125000000000005
+  },
+  {
+    "Id": "2013106533",
+    "Name": "ESPINOZA HUAMAN, DIANA KAROLINA",
+    "Grades": {
+      "P1": 10.0,
+      "EP": 8.0,
+      "P2": 6.4000000000000012,
+      "EF": 0.0
+    },
+    "FinalGrade": 6.1000000000000005
+  },
+  {
+    "Id": "2012222308",
+    "Name": "FERNANDEZ HUARAC, CARLOS ALBERTO",
+    "Grades": {
+      "P1": 14.0,
+      "EP": 7.0,
+      "P2": 6.6000000000000014,
+      "EF": 0.0
+    },
+    "FinalGrade": 6.9
+  },
+  {
+    "Id": "2009108398",
+    "Name": "FLORES BRACO, BRYAN KENNEX",
+    "Grades": {
+      "P1": 10.0,
+      "EP": 19.0,
+      "P2": 5.7000000000000011,
+      "EF": 0.0
+    },
+    "FinalGrade": 8.675
+  },
+  {
+    "Id": "2011157306",
+    "Name": "GAMEROS DUEÑAS, REYSSER WILFREDO",
+    "Grades": {
+      "P1": 9.0,
+      "EP": 6.5,
+      "P2": 1.1,
+      "EF": 0.0
+    },
+    "FinalGrade": 4.15
+  },
+  {
+    "Id": "2014110185",
+    "Name": "GUILLEN BRUNA, HAROLD RANDOLPH",
+    "Grades": {
+      "P1": 9.0,
+      "EP": 11.5,
+      "P2": 7.9000000000000012,
+      "EF": 0.0
+    },
+    "FinalGrade": 7.1000000000000005
+  },
+  {
+    "Id": "2014112593",
+    "Name": "GUTIERREZ MONTALBAN, JANET NATALY",
+    "Grades": {
+      "P1": 13.0,
+      "EP": 9.0,
+      "P2": 6.6000000000000005,
+      "EF": 0.0
+    },
+    "FinalGrade": 7.15
+  },
+  {
+    "Id": "2014113681",
+    "Name": "GUTIERREZ ZEGARRA, CYNTHIA ELVIRA",
+    "Grades": {
+      "P1": 8.0,
+      "EP": 10.0,
+      "P2": 7.0000000000000009,
+      "EF": 0.0
+    },
+    "FinalGrade": 6.25
+  },
+  {
+    "Id": "2010208708",
+    "Name": "HIDALGO GHERVASI, LOVEL PATRICIO",
+    "Grades": {
+      "P1": 16.0,
+      "EP": 14.0,
+      "P2": 7.9000000000000012,
+      "EF": 0.0
+    },
+    "FinalGrade": 9.475
+  },
+  {
+    "Id": "2011209292",
+    "Name": "HUAYTA MUÑOZ, CARLOS ALBERTO",
+    "Grades": {
+      "P1": 16.0,
+      "EP": 10.0,
+      "P2": 7.3000000000000007,
+      "EF": 0.0
+    },
+    "FinalGrade": 8.325
+  },
+  {
+    "Id": "2013209348",
+    "Name": "LLAUCE RELAIZA, CARLOS EDUARDO",
+    "Grades": {
+      "P1": 9.0,
+      "EP": 13.0,
+      "P2": 7.2000000000000011,
+      "EF": 0.0
+    },
+    "FinalGrade": 7.3000000000000007
+  },
+  {
+    "Id": "2013148878",
+    "Name": "LOPEZ ARGANDOÑA, MARY CARMEN",
+    "Grades": {
+      "P1": 5.0,
+      "EP": 7.0,
+      "P2": 7.2000000000000011,
+      "EF": 0.0
+    },
+    "FinalGrade": 4.8000000000000007
+  },
+  {
+    "Id": "2013148084",
+    "Name": "LOPEZ TITO, EDER",
+    "Grades": {
+      "P1": 17.0,
+      "EP": 9.5,
+      "P2": 8.4000000000000021,
+      "EF": 0.0
+    },
+    "FinalGrade": 8.7250000000000014
+  },
+  {
+    "Id": "2012222419",
+    "Name": "LUCANO SEVERINO, JACKELINE ELIZABETH",
+    "Grades": {
+      "P1": 11.0,
+      "EP": 8.5,
+      "P2": 7.1000000000000014,
+      "EF": 0.0
+    },
+    "FinalGrade": 6.65
+  },
+  {
+    "Id": "2011157304",
+    "Name": "MEJIA SANCHEZ, JHOSEP GIAMPIER",
+    "Grades": {
+      "P1": 16.0,
+      "EP": 12.0,
+      "P2": 7.2000000000000011,
+      "EF": 0.0
+    },
+    "FinalGrade": 8.8
+  },
+  {
+    "Id": "2014110165",
+    "Name": "NAVARRO PACHECO, EFRAIN ELEAZAF",
+    "Grades": {
+      "P1": 15.0,
+      "EP": 11.5,
+      "P2": 8.2000000000000011,
+      "EF": 0.0
+    },
+    "FinalGrade": 8.675
+  },
+  {
+    "Id": "2013207207",
+    "Name": "OGOSI HUAMAN, JUAN MIGUEL",
+    "Grades": {
+      "P1": 8.0,
+      "EP": 8.0,
+      "P2": 4.6000000000000005,
+      "EF": 0.0
+    },
+    "FinalGrade": 5.15
+  },
+  {
+    "Id": "2013147200",
+    "Name": "PEREZ LOPEZ, MITSAEL FERNANDO",
+    "Grades": {
+      "P1": 11.0,
+      "EP": 9.5,
+      "P2": 7.1000000000000014,
+      "EF": 0.0
+    },
+    "FinalGrade": 6.9
+  },
+  {
+    "Id": "2013106492",
+    "Name": "RAMOS COLLANTES, LEANDRO DAVID",
+    "Grades": {
+      "P1": 13.0,
+      "EP": 8.5,
+      "P2": 7.3000000000000007,
+      "EF": 0.0
+    },
+    "FinalGrade": 7.2
+  },
+  {
+    "Id": "2013146882",
+    "Name": "RAMOS PEREZ, JORGE JESUS",
+    "Grades": {
+      "P1": 14.0,
+      "EP": 8.0,
+      "P2": 6.9000000000000012,
+      "EF": 0.0
+    },
+    "FinalGrade": 7.2250000000000005
+  },
+  {
+    "Id": "2014112833",
+    "Name": "RECOBA ROJAS, JOSE CARLOS",
+    "Grades": {
+      "P1": 12.0,
+      "EP": 13.5,
+      "P2": 7.9000000000000012,
+      "EF": 0.0
+    },
+    "FinalGrade": 8.35
+  },
+  {
+    "Id": "2013148126",
+    "Name": "ROJAS CALDERON, LUIS DANIEL",
+    "Grades": {
+      "P1": 8.0,
+      "EP": 7.5,
+      "P2": 6.0,
+      "EF": 0.0
+    },
+    "FinalGrade": 5.375
+  },
+  {
+    "Id": "2014201035",
+    "Name": "RUIZ GARCIA, MARIA LUISA",
+    "Grades": {
+      "P1": 7.0,
+      "EP": 9.0,
+      "P2": 7.1000000000000014,
+      "EF": 0.0
+    },
+    "FinalGrade": 5.775
+  },
+  {
+    "Id": "2014110329",
+    "Name": "TASAYCO ALBARRACIN, ANGIE CAROLINA",
+    "Grades": {
+      "P1": 13.0,
+      "EP": 9.75,
+      "P2": 7.9000000000000012,
+      "EF": 0.0
+    },
+    "FinalGrade": 7.6625000000000005
+  },
+  {
+    "Id": "2014112225",
+    "Name": "TIPIANA ROSALES, BRENDA YOMIRA",
+    "Grades": {
+      "P1": 16.0,
+      "EP": 8.5,
+      "P2": 8.2000000000000011,
+      "EF": 0.0
+    },
+    "FinalGrade": 8.175
+  },
+  {
+    "Id": "2013108433",
+    "Name": "VASQUEZ RUIZ, JHONNY EDGAR",
+    "Grades": {
+      "P1": 9.0,
+      "EP": 18.0,
+      "P2": 7.4000000000000012,
+      "EF": 0.0
+    },
+    "FinalGrade": 8.6
+  },
+  {
+    "Id": "2014113375",
+    "Name": "VEGA ANCHANTE, JAVIER ROLANDO",
+    "Grades": {
+      "P1": 12.0,
+      "EP": 9.5,
+      "P2": 7.9000000000000012,
+      "EF": 0.0
+    },
+    "FinalGrade": 7.3500000000000005
+  },
+  {
+    "Id": "2012212327",
+    "Name": "VILCHEZ PALOMINO, ALEJANDRO",
+    "Grades": {
+      "P1": 10.0,
+      "EP": 8.5,
+      "P2": 8.2000000000000011,
+      "EF": 0.0
+    },
+    "FinalGrade": 6.6750000000000007
+  }
+]
