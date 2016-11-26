@@ -1,4 +1,73 @@
 
+Console.WriteLine("---------------------------------")
+        Console.WriteLine("- INGRESO NOTA SEGUNDA PRACTICA -")
+        Console.WriteLine("-     SMART EVALUATION MODE     -")
+        Console.WriteLine("---------------------------------")
+        Console.WriteLine()
+        Console.WriteLine()
+
+
+Dim serializer As New JsonSerializer() With {.Formatting = Formatting.Indented}
+        Dim path As String = IO.Path.Combine(My.Application.Info.DirectoryPath, "sim162-lst-json.txt")
+        Dim stdlst = StudentIO.GetStudentsFromJson("sim162-lst-json.txt")
+        Dim pdata = StudentIO.GetQuestionData(Evaluation.P2)
+        Dim tlst As New List(Of Integer)
+
+        For Each std As Student In stdlst
+
+            Console.WriteLine(std.Name)
+            Console.WriteLine()
+
+            Dim grade As Double = 0
+            Dim score As Double = 0
+
+            Dim t1 As DateTime
+            Dim t2 As DateTime
+
+            Do
+                t1 = Date.Now()
+                For Each preg In pdata
+                    Console.Write(" " & preg.Name & ControlChars.Tab & "  :   ")
+                    Dim ansStr = Console.ReadLine()
+                    Dim ans = Convert.ToInt32(ansStr, 2)
+                    grade += IIf(ans = preg.Answer, preg.Score, 0)
+                    score = IIf(ans = preg.Answer, preg.Score, 0)
+                    Console.WriteLine(" SCORE" & ControlChars.Tab & "  :   " & score)
+                    Console.WriteLine()
+                    Console.Write(ControlChars.Cr)
+                Next
+                t2 = Date.Now()
+                Console.WriteLine()
+                Console.WriteLine(std.Name)
+                Console.WriteLine("NOTA EXAMEN TEORICO: " & grade)
+                Console.Write("CONFIRMAR EVALUACION (SI/NO): ")
+            Loop While (Console.ReadLine().Trim().ToUpper() = "NO")
+
+            tlst.Add(t2.Subtract(t1).Seconds)
+            std.Grades.Item(Evaluation.P2) = grade
+            Using sw As New StreamWriter("sim162-lst-json.txt"), writer As New JsonTextWriter(sw)
+                serializer.Serialize(writer, stdlst)
+            End Using
+            Console.WriteLine()
+        Next
+
+        Dim tscant = tlst.Count
+        Dim tsmin = New TimeSpan(0, 0, tlst.Min)
+        Dim tsmax = New TimeSpan(0, 0, tlst.Max)
+        Dim tsprom = New TimeSpan(0, 0, tlst.Average)
+        Dim tstotal = New TimeSpan(0, 0, tlst.Sum)
+
+        Console.WriteLine()
+        Console.WriteLine()
+        Console.WriteLine("EXAMENES CORREGIDOS      :   " & tscant)
+        Console.WriteLine("TIEMPO EXAMEN MIN.       :   " & tsmin.Minutes & "m " & tsmin.Seconds & "s")
+        Console.WriteLine("TIEMPO EXAMEN MAX.       :   " & tsmax.Minutes & "m " & tsmax.Seconds & "s")
+        Console.WriteLine("TIEMPO EXAMEN PROM.      :   " & tsprom.Minutes & "m " & tsprom.Seconds & "s")
+        Console.WriteLine("TIEMPO TOTAL             :   " & tstotal.Minutes & "m " & tstotal.Seconds & "s")
+
+
+
+
 
 Dim stdLst = StudentIO.GetStudents("visual162-lst.txt")
 Dim json = JsonConvert.SerializeObject(stdLst, Formatting.Indented)

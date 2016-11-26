@@ -241,10 +241,20 @@ Module Main
         Console.WriteLine("¡Hello World!")
 
         Dim lst = StudentIO.GetStudentsFromJson("sim162-lst-json.txt")
+        Dim sb As New StringBuilder()
+        Dim id, name, p2
 
+        Using sw As StreamWriter = New StreamWriter("sim162-p2-xls.txt")
+            For Each std As Student In lst
+                id = std.Id
+                name = std.Name
+                p2 = Math.Round(std.Grades(Evaluation.P2), 2)
+                sb.AppendLine(String.Join(ControlChars.Tab, New String() {id, name, p2}))
+            Next
+            sw.Write(sb.ToString())
+        End Using
 
         Return 0
-
     End Function
 
 End Module
