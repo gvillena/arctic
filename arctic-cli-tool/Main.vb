@@ -1,5 +1,6 @@
 ﻿Imports System.IO
 Imports System.Text
+Imports System.Text.RegularExpressions
 Imports CommandLine
 Imports CommandLine.Text
 Imports Newtonsoft.Json
@@ -239,20 +240,159 @@ Module Main
 
         Console.WriteLine()
         Console.WriteLine("¡Hello World!")
+        Console.WriteLine()
 
-        Dim lst = StudentIO.GetStudentsFromJson("sim162-lst-json.txt")
-        Dim sb As New StringBuilder()
-        Dim id, name, p2
+        Pweb162M.InitGradeMngr()
 
-        Using sw As StreamWriter = New StreamWriter("sim162-p2-xls.txt")
-            For Each std As Student In lst
-                id = std.Id
-                name = std.Name
-                p2 = Math.Round(std.Grades(Evaluation.P2), 2)
-                sb.AppendLine(String.Join(ControlChars.Tab, New String() {id, name, p2}))
-            Next
-            sw.Write(sb.ToString())
-        End Using
+        'Console.WriteLine("-----------------------------")
+        'Console.WriteLine("- INGRESO NOTA EXAMEN FINAL -")
+        'Console.WriteLine("-   SMART EVALUATION MODE   -")
+        'Console.WriteLine("-----------------------------")
+        'Console.WriteLine()
+        'Console.WriteLine("HOLA")
+
+        'Dim serializer As New JsonSerializer() With {.Formatting = Formatting.Indented}
+        'Dim path As String = IO.Path.Combine(My.Application.Info.DirectoryPath, "sim162-lst-json.txt")
+        'Dim stdlst = StudentIO.GetStudentsFromJson("sim162-lst-json.txt")
+        'Dim pdata = StudentIO.GetQuestionData(Evaluation.EF)
+        'Dim tlst As New List(Of Integer)
+
+        'Dim optn As String
+        'Dim isValidOption = Function(x)
+        '                        If Not Regex.IsMatch(x, "^[123]{1,1}$") Then
+        '                            Console.WriteLine("OPCION NO VALIDA, INTENTALO DE NUEVO.")
+        '                            Console.WriteLine()
+        '                            Return False
+        '                        End If
+        '                        Return True
+        '                    End Function
+
+        'Do
+        '    Console.WriteLine("MODO DE INGRESO")
+        '    Console.WriteLine()
+        '    Console.WriteLine(" [1] TODOS LOS EXAMENES POR LISTA DESDE EL PRINCIPIO.")
+        '    Console.WriteLine(" [2] TODOS LOS EXAMENES POR LISTA A PARTIR DEL INDICE INGRESADO.")
+        '    Console.WriteLine(" [3] SOLO UN EXAMEN SEGUN NUMERO DE ORDEN INGRESADO.")
+        '    Console.WriteLine()
+        '    Console.Write("INGRESA UNA OPCION: ")
+        '    optn = Console.ReadLine()
+        'Loop Until (isValidOption(optn))
+
+        'Dim ind As Integer = 0
+
+        'Select Case optn
+        '    Case "1"
+        '        ' Nothing
+        '    Case "2"
+        '        Console.WriteLine()
+        '        Console.Write("INGRESAR RESPUESTAS A PARTIR DEL INDICE: ")
+        '        Integer.TryParse(Console.ReadLine(), ind)
+        '    Case "3"
+        '        Console.WriteLine()
+        '        Console.Write("INGRESAR RESPUESTAS DE ALUMNO CON NUMERO DE ORDEN: ")
+        '        Integer.TryParse(Console.ReadLine(), ind)
+        'End Select
+
+        'Console.WriteLine()
+
+        'For Each std As Student In stdlst
+
+        '    Select Case optn
+        '        Case "1"
+        '            ' Nothing
+        '        Case "2"
+        '            If stdlst.IndexOf(std) < ind - 1 Then
+        '                Continue For
+        '            End If
+        '        Case "3"
+        '            If stdlst.IndexOf(std) <> ind - 1 Then
+        '                Continue For
+        '            End If
+        '    End Select
+
+        '    Console.WriteLine(std.Name)
+        '    Console.WriteLine()
+
+        '    Dim grade As Double = 0
+        '    Dim score As Double = 0
+
+        '    Dim t1 As DateTime
+        '    Dim t2 As DateTime
+
+        '    Dim ans
+        '    Dim ansStr
+
+        '    Dim isValidInput = Function(x)
+        '                           If Not Regex.IsMatch(x, "^[01]{4,4}$") Then
+        '                               Console.WriteLine(" PATRON DE RESPUESTA NO VALIDO, INTENTALO DE NUEVO.")
+        '                               Console.WriteLine()
+        '                               Return False
+        '                           End If
+        '                           Return True
+        '                       End Function
+
+        '    Do
+        '        grade = 0
+        '        t1 = Date.Now()
+        '        For Each preg In pdata
+        '            Do
+        '                Console.Write(" " & preg.Name & ControlChars.Tab & "  :   ")
+        '                ansStr = Console.ReadLine()
+        '            Loop While (Not isValidInput(ansStr))
+
+        '            ans = Convert.ToInt32(ansStr, 2)
+        '            grade += IIf(ans = preg.Answer, preg.Score, 0)
+        '            score = IIf(ans = preg.Answer, preg.Score, 0)
+        '            Console.WriteLine(" SCORE" & ControlChars.Tab & "  :   " & score)
+        '            Console.WriteLine()
+        '            Console.Write(ControlChars.Cr)
+        '        Next
+        '        t2 = Date.Now()
+        '        Console.WriteLine()
+        '        Console.WriteLine(std.Name)
+        '        Console.WriteLine("NOTA EXAMEN TEORICO: " & grade)
+        '        Console.Write("CONFIRMAR EVALUACION (SI/NO): ")
+        '    Loop While (Console.ReadLine().Trim().ToUpper() = "NO")
+
+        '    tlst.Add(t2.Subtract(t1).Seconds)
+        '    std.Grades.Item(Evaluation.EF) = grade
+        '    Using sw As New StreamWriter(path), writer As New JsonTextWriter(sw)
+        '        serializer.Serialize(writer, stdlst)
+        '    End Using
+        '    Console.WriteLine()
+        'Next
+
+        ''Dim tscant = tlst.Count
+        ''Dim tsmin = New TimeSpan(tlst.Min * )
+        ''Dim tsmax = New TimeSpan(0, 0, tlst.Max)
+        ''Dim tsprom = New TimeSpan(0, 0, tlst.Average)
+        ''Dim tstotal = New TimeSpan(0, 0, tlst.Sum)
+
+        ''Console.WriteLine()
+        ''Console.WriteLine()
+        ''Console.WriteLine("EXAMENES CORREGIDOS      :   " & tscant)
+        ''Console.WriteLine("TIEMPO EXAMEN MIN.       :   " & tsmin.Minutes & "m " & tsmin.Seconds & "s")
+        ''Console.WriteLine("TIEMPO EXAMEN MAX.       :   " & tsmax.Minutes & "m " & tsmax.Seconds & "s")
+        ''Console.WriteLine("TIEMPO EXAMEN PROM.      :   " & tsprom.Minutes & "m " & tsprom.Seconds & "s")
+        ''Console.WriteLine("TIEMPO TOTAL             :   " & tstotal.Minutes & "m " & tstotal.Seconds & "s")
+
+        'Console.WriteLine()
+        'Console.WriteLine("¡SILVIA ERES LO MAXIMO! :3")
+
+
+        'Dim lst = StudentIO.GetStudentsFromJson("sim162-lst-json.txt")
+        'Dim sb As New StringBuilder()
+        'Dim id, name, p2
+
+        'Using sw As StreamWriter = New StreamWriter("sim162-p2-xls.txt")
+        '    For Each std As Student In lst
+        '        id = std.Id
+        '        name = std.Name
+        '        p2 = Math.Round(std.Grades(Evaluation.P2), 2)
+        '        sb.AppendLine(String.Join(ControlChars.Tab, New String() {id, name, p2}))
+        '    Next
+        '    sw.Write(sb.ToString())
+        'End Using
 
         Return 0
     End Function
