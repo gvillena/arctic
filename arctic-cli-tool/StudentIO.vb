@@ -4,13 +4,6 @@ Imports Newtonsoft.Json
 
 Public Class StudentIO
 
-    Public Shared Function GetStudentFromSim162(id As String) As Student
-
-    End Function
-
-    Public Shared Function GetStudentFromSim162(id As String) As Student
-
-    End Function
 
     Public Shared Function GetStudent(id As String, fileName As String) As Student
 

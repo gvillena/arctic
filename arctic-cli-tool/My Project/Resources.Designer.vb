@@ -59,5 +59,293 @@ Namespace My.Resources
                 resourceCulture = value
             End Set
         End Property
+        
+        '''<summary>
+        '''  Busca una cadena traducida similar a A process must have an arrival time of 0 or later..
+        '''</summary>
+        Friend ReadOnly Property ArrivalTimeLessThanZero() As String
+            Get
+                Return ResourceManager.GetString("ArrivalTimeLessThanZero", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca una cadena traducida similar a The CPU utilization can only be calculated upon simulation completion..
+        '''</summary>
+        Friend ReadOnly Property CpuUtilizationBeforeSimulationCompleted() As String
+            Get
+                Return ResourceManager.GetString("CpuUtilizationBeforeSimulationCompleted", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca una cadena traducida similar a The name used for the generated report file must be at least one char in length..
+        '''</summary>
+        Friend ReadOnly Property FileNameLessThanOneChar() As String
+            Get
+                Return ResourceManager.GetString("FileNameLessThanOneChar", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca una cadena traducida similar a A name for the report must be specified..
+        '''</summary>
+        Friend ReadOnly Property FileNameNotSpecified() As String
+            Get
+                Return ResourceManager.GetString("FileNameNotSpecified", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca una cadena traducida similar a The maximum wait time can only be calculated upon simulation completion..
+        '''</summary>
+        Friend ReadOnly Property GetMaximumWaitTimeBeforeSimulationInvoked() As String
+            Get
+                Return ResourceManager.GetString("GetMaximumWaitTimeBeforeSimulationInvoked", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca una cadena traducida similar a The minimum wait time can only be calculated upon simulation completion..
+        '''</summary>
+        Friend ReadOnly Property GetMinimumWaitTimeBeforeSimulationInvoked() As String
+            Get
+                Return ResourceManager.GetString("GetMinimumWaitTimeBeforeSimulationInvoked", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca una cadena traducida similar a The mean response time can only be calculated upon simulation completion..
+        '''</summary>
+        Friend ReadOnly Property GetResponseTimeMeanBeforeSimulationComplete() As String
+            Get
+                Return ResourceManager.GetString("GetResponseTimeMeanBeforeSimulationComplete", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca una cadena traducida similar a The response time standard deviation can only be calculated upon simulation completion..
+        '''</summary>
+        Friend ReadOnly Property GetResponseTimeStandardDeviationBeforeSimulationCompleted() As String
+            Get
+                Return ResourceManager.GetString("GetResponseTimeStandardDeviationBeforeSimulationCompleted", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca una cadena traducida similar a The response time variance can only be calculated upon simulation completion..
+        '''</summary>
+        Friend ReadOnly Property GetResponseTimeVarianceBeforeSimulationCompleted() As String
+            Get
+                Return ResourceManager.GetString("GetResponseTimeVarianceBeforeSimulationCompleted", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca una cadena traducida similar a The throughput mean can only be calculated when the simulation has completed..
+        '''</summary>
+        Friend ReadOnly Property GetThroughputMeanBeforeSimulationComplete() As String
+            Get
+                Return ResourceManager.GetString("GetThroughputMeanBeforeSimulationComplete", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca una cadena traducida similar a The throughput standard deviation can only be calculated upon simulation completion..
+        '''</summary>
+        Friend ReadOnly Property GetThroughputStandardDeviationBeforeSimulationComplete() As String
+            Get
+                Return ResourceManager.GetString("GetThroughputStandardDeviationBeforeSimulationComplete", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca una cadena traducida similar a The throughput variance can only be calculated upon simulation completion..
+        '''</summary>
+        Friend ReadOnly Property GetThroughputVarianceBeforeSimulationComplete() As String
+            Get
+                Return ResourceManager.GetString("GetThroughputVarianceBeforeSimulationComplete", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca una cadena traducida similar a The turnaround time mean can only be calculated after the simulation has been completed..
+        '''</summary>
+        Friend ReadOnly Property GetTurnaroundTimeMeanBeforeSimulationComplete() As String
+            Get
+                Return ResourceManager.GetString("GetTurnaroundTimeMeanBeforeSimulationComplete", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca una cadena traducida similar a The turnaround time standard deviation can only be calculated upon simulation completion..
+        '''</summary>
+        Friend ReadOnly Property GetTurnaroundTimeStandardDeviationSimulationCompleted() As String
+            Get
+                Return ResourceManager.GetString("GetTurnaroundTimeStandardDeviationSimulationCompleted", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca una cadena traducida similar a The turnaround time variance can only be calculated upon simulation completion..
+        '''</summary>
+        Friend ReadOnly Property GetTurnaroundTimeVarianceBeforeSimulationCompleted() As String
+            Get
+                Return ResourceManager.GetString("GetTurnaroundTimeVarianceBeforeSimulationCompleted", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca una cadena traducida similar a The process wait time variance can only be calculated upon simulation completion..
+        '''</summary>
+        Friend ReadOnly Property GetVarianceInvokedBeforeSimulationInvoked() As String
+            Get
+                Return ResourceManager.GetString("GetVarianceInvokedBeforeSimulationInvoked", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca una cadena traducida similar a The mean wait time can only be calculated upon simulation completion..
+        '''</summary>
+        Friend ReadOnly Property GetWaitTimeMeanInvokedBeforeSimulationCompleted() As String
+            Get
+                Return ResourceManager.GetString("GetWaitTimeMeanInvokedBeforeSimulationCompleted", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca una cadena traducida similar a The process wait time standard deviation can only be calculated upon simulation completion..
+        '''</summary>
+        Friend ReadOnly Property GetWaitTimeStandardDeviationBeforeSimulationInvoked() As String
+            Get
+                Return ResourceManager.GetString("GetWaitTimeStandardDeviationBeforeSimulationInvoked", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca una cadena traducida similar a A simulation cannot contain 0 processes..
+        '''</summary>
+        Friend ReadOnly Property NoProcessesToRun() As String
+            Get
+                Return ResourceManager.GetString("NoProcessesToRun", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca una cadena traducida similar a The number of processes associated with a process category must be a positive value..
+        '''</summary>
+        Friend ReadOnly Property NumberOfProcessesNegative() As String
+            Get
+                Return ResourceManager.GetString("NumberOfProcessesNegative", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca una cadena traducida similar a The minimum number of characters a valid fully qualified directory path can have is 3..
+        '''</summary>
+        Friend ReadOnly Property OutputDirectoryLessThanThree() As String
+            Get
+                Return ResourceManager.GetString("OutputDirectoryLessThanThree", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca una cadena traducida similar a The output directory provided does not exist..
+        '''</summary>
+        Friend ReadOnly Property OutputDirectoryNonExistant() As String
+            Get
+                Return ResourceManager.GetString("OutputDirectoryNonExistant", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca una cadena traducida similar a The poll time specified must be greater than 0..
+        '''</summary>
+        Friend ReadOnly Property PollTimeGreaterThanZero() As String
+            Get
+                Return ResourceManager.GetString("PollTimeGreaterThanZero", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca una cadena traducida similar a A process must have a burst time of at least 1ns..
+        '''</summary>
+        Friend ReadOnly Property ProcessBurstTimeLessThanOne() As String
+            Get
+                Return ResourceManager.GetString("ProcessBurstTimeLessThanOne", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca una cadena traducida similar a A processes&apos; PID must be a positive value. .
+        '''</summary>
+        Friend ReadOnly Property ProcessIdLessThanZero() As String
+            Get
+                Return ResourceManager.GetString("ProcessIdLessThanZero", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca una cadena traducida similar a The processLoad must contain at least one process..
+        '''</summary>
+        Friend ReadOnly Property ProcessLoadEmpty() As String
+            Get
+                Return ResourceManager.GetString("ProcessLoadEmpty", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca una cadena traducida similar a A strategy must be specified..
+        '''</summary>
+        Friend ReadOnly Property RunnerStrategyNull() As String
+            Get
+                Return ResourceManager.GetString("RunnerStrategyNull", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca una cadena traducida similar a The minimum number of times a simulation can be ran is 2..
+        '''</summary>
+        Friend ReadOnly Property RunsLessThanTwo() As String
+            Get
+                Return ResourceManager.GetString("RunsLessThanTwo", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca una cadena traducida similar a The % threshold to invoke the expert rule has to be within 1 - 100..
+        '''</summary>
+        Friend ReadOnly Property ThresholdOutsideBounds() As String
+            Get
+                Return ResourceManager.GetString("ThresholdOutsideBounds", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca una cadena traducida similar a The ThroughputWindows property can only be accessed upon simulation completion..
+        '''</summary>
+        Friend ReadOnly Property ThroughputWindowsBeforeCompletion() As String
+            Get
+                Return ResourceManager.GetString("ThroughputWindowsBeforeCompletion", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca una cadena traducida similar a The time quantum cannot be less than 1..
+        '''</summary>
+        Friend ReadOnly Property TimeQuantumLessThanOne() As String
+            Get
+                Return ResourceManager.GetString("TimeQuantumLessThanOne", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca una cadena traducida similar a The windowTimeframe cannot be less than 0..
+        '''</summary>
+        Friend ReadOnly Property WindowTimeFrameLessThanZero() As String
+            Get
+                Return ResourceManager.GetString("WindowTimeFrameLessThanZero", resourceCulture)
+            End Get
+        End Property
     End Module
 End Namespace

@@ -238,24 +238,164 @@ Module Main
 
     Function Test(opts As TestOptions)
 
+        Dim serializer As New JsonSerializer() With {.Formatting = Formatting.Indented}
+        Dim stdpath As String = Path.Combine(My.Application.Info.DirectoryPath, "so162-lst-json.txt")
+        Dim stdlst As List(Of Student) = So162M.GetStudents()
+        Dim exfpath As String = Path.Combine(My.Application.Info.DirectoryPath, "so162-exfinal-json.txt")
+        Dim exfinal As ExFinal = Nothing
+
+        If Not File.Exists(exfpath) Then
+            Dim std As Student = Nothing
+            Do
+                Console.WriteLine()
+                Console.Write("INGRESE SU CODIGO: ")
+                std = stdlst.Find(Function(x) x.Id = Console.ReadLine())
+                If std Is Nothing Then
+                    Console.WriteLine("CODIGO NO VALIDO, INTENTELO DE NUEVO.")
+                End If
+            Loop While std Is Nothing
+
+            exfinal = New ExFinal()
+            exfinal.CodStd = std.Id
+            exfinal.Name = std.Name
+            exfinal.GenerateJobs()
+
+            Using sw As New StreamWriter(exfpath), writer As New JsonTextWriter(sw)
+                serializer.Serialize(writer, exfinal)
+            End Using
+        Else
+            Using file As New StreamReader(exfpath)
+                exfinal = serializer.Deserialize(file, GetType(ExFinal))
+            End Using
+        End If
+
         Console.WriteLine()
-        Console.WriteLine("¡Hello World!")
+        Console.WriteLine("EXAMEN FINAL SISTEMAS OPERATIVOS 2016-2")
+        Console.WriteLine(exfinal.Name)
+        Console.WriteLine()
+        Console.WriteLine("INFORMACION DE TRABAJOS: ")
+        Console.WriteLine()
+        Console.WriteLine(" {0,-7}   {1, -9}   {2, -10}", "TRABAJO", "CICLO CPU", "T. LLEGADA")
+        For Each p As Process In exfinal.Jobs
+            Console.WriteLine(" {0,-7}   {1, -9}   {2, -10}", p.Id, p.BurstTime, p.ArrivalTime)
+        Next
         Console.WriteLine()
 
-        Pweb162M.InitGradeMngr()
+        Dim optn As String
+        Dim isValidOption = Function(x)
+                                If Not Regex.IsMatch(x, "^[12]{1,1}$") Then
+                                    Console.WriteLine("OPCION NO VALIDA, INTENTALO DE NUEVO.")
+                                    Console.WriteLine()
+                                    Return False
+                                End If
+                                Return True
+                            End Function
 
-        'Console.WriteLine("-----------------------------")
-        'Console.WriteLine("- INGRESO NOTA EXAMEN FINAL -")
-        'Console.WriteLine("-   SMART EVALUATION MODE   -")
-        'Console.WriteLine("-----------------------------")
-        'Console.WriteLine()
-        'Console.WriteLine("HOLA")
+        Do
+            Console.WriteLine()
+            Console.WriteLine("ALGORITMOS DE PLANIFICACION")
+            Console.WriteLine()
+            Console.WriteLine(" [1] FCFS")
+            Console.WriteLine(" [2] ROUND ROBIN (QTime: 5ms)")
+            Console.WriteLine()
+            Console.Write("INGRESA UNA OPCION: ")
+            optn = Console.ReadLine()
+        Loop Until (isValidOption(optn))
 
-        'Dim serializer As New JsonSerializer() With {.Formatting = Formatting.Indented}
-        'Dim path As String = IO.Path.Combine(My.Application.Info.DirectoryPath, "sim162-lst-json.txt")
-        'Dim stdlst = StudentIO.GetStudentsFromJson("sim162-lst-json.txt")
-        'Dim pdata = StudentIO.GetQuestionData(Evaluation.EF)
-        'Dim tlst As New List(Of Integer)
+        Dim title As String = String.Empty
+        Dim algoritmo As Algoritmo = Algoritmo.Ninguno
+
+        Select Case optn
+            Case "1" ' FCFS
+                title = "FIRST COME FIRST SERVED"
+                algoritmo = Algoritmo.FCFS
+            Case "2" ' Round Robin
+                title = "ROUND ROBIN (QTime: 5ms)"
+                algoritmo = Algoritmo.RoundRobin
+        End Select
+
+        Do
+            Console.WriteLine()
+            Console.WriteLine(title)
+            Console.WriteLine()
+            Console.WriteLine(" [1] EJECUTAR SIMULACION")
+            Console.WriteLine(" [2] INFO. ESTADISTICAS")
+            'Console.WriteLine(" [3] INGRESAR RESPUESTAS")
+            Console.WriteLine()
+            Console.Write("INGRESA UNA OPCION: ")
+            optn = Console.ReadLine()
+        Loop Until (isValidOption(optn))
+
+        Console.WriteLine()
+
+        Select Case optn
+            Case "1" ' Ejecutar Simulacion
+                Dim runner As Runner
+                runner = exfinal.RunSimulation(algoritmo)
+            Case "2" ' Ver Estadisticas
+                Console.WriteLine()
+                Console.WriteLine()
+                Console.WriteLine("ESTADISTICAS")
+                Console.WriteLine()
+                Console.WriteLine(" Utilización de CPU")
+                Console.WriteLine(" Turnaround Time")
+                Console.WriteLine(" Tiempo de Espera")
+                Console.WriteLine(" Tiempo de Respuesta")
+            Case "3" ' Ingresar Respuestas
+
+        End Select
+
+
+        'Select Case optn
+        '    Case "1"
+
+
+        '    Case "2"
+        '        exfinal.DisplayStats()
+        '    Case "3"
+        '        exfinal.AnswerFCFS()
+        'End Select
+
+
+
+
+
+
+        'Do
+        '    Console.WriteLine()
+        '    Console.WriteLine("FIRST COME FIRST SERVED")
+        '    Console.WriteLine()
+        '    Console.WriteLine(" [1] EJECUTAR SIMULACION")
+        '    Console.WriteLine(" [2] INFO. ESTADISTICAS")
+        '    Console.WriteLine(" [3] INGRESAR RESPUESTAS")
+        '    Console.WriteLine()
+        '    Console.Write("INGRESA UNA OPCION: ")
+        '    optn = Console.ReadLine()
+        'Loop Until (isValidOption(optn))
+
+
+        'Console.WriteLine("Utilice este programa para realizar simulaciones e ingresar de planificacion de trabajos.")
+
+        ''        Console.WriteLine("")
+        ''        Console.WriteLine("Calcular utilización de CPU, rendimiento, 'turnaroundtime', tiempo de esperay  tiempo de respuestapara los siguientes algoritmos de planificación de trabajos:
+        ''")
+
+        ''        Console.WriteLine("Calcular utilización de CPU, rendimiento, 'turnaroundtime', tiempo de esperay  tiempo de respuestapara los siguientes algoritmos de planificación de trabajos:
+        ''")
+
+        'Dim optn As String
+        'Select Case optn
+        '    Case "1"
+        '        exfinal.RunSimulationFCFS()
+        '    Case "2"
+        '        exfinal.RunSimulationSJN()
+        '    Case "3"
+        '        exfinal.RunSimulationRoundRobin()
+        '    Case "3"
+        '        exfinal.RunSimulationRoundRobin()
+        '    Case "3"
+        '        exfinal.RunSimulationRoundRobin()
+        'End Select
 
         'Dim optn As String
         'Dim isValidOption = Function(x)
@@ -268,7 +408,7 @@ Module Main
         '                    End Function
 
         'Do
-        '    Console.WriteLine("MODO DE INGRESO")
+        '    Console.WriteLine("MENU")
         '    Console.WriteLine()
         '    Console.WriteLine(" [1] TODOS LOS EXAMENES POR LISTA DESDE EL PRINCIPIO.")
         '    Console.WriteLine(" [2] TODOS LOS EXAMENES POR LISTA A PARTIR DEL INDICE INGRESADO.")
@@ -278,123 +418,19 @@ Module Main
         '    optn = Console.ReadLine()
         'Loop Until (isValidOption(optn))
 
-        'Dim ind As Integer = 0
-
-        'Select Case optn
-        '    Case "1"
-        '        ' Nothing
-        '    Case "2"
-        '        Console.WriteLine()
-        '        Console.Write("INGRESAR RESPUESTAS A PARTIR DEL INDICE: ")
-        '        Integer.TryParse(Console.ReadLine(), ind)
-        '    Case "3"
-        '        Console.WriteLine()
-        '        Console.Write("INGRESAR RESPUESTAS DE ALUMNO CON NUMERO DE ORDEN: ")
-        '        Integer.TryParse(Console.ReadLine(), ind)
-        'End Select
-
-        'Console.WriteLine()
-
-        'For Each std As Student In stdlst
-
-        '    Select Case optn
-        '        Case "1"
-        '            ' Nothing
-        '        Case "2"
-        '            If stdlst.IndexOf(std) < ind - 1 Then
-        '                Continue For
-        '            End If
-        '        Case "3"
-        '            If stdlst.IndexOf(std) <> ind - 1 Then
-        '                Continue For
-        '            End If
-        '    End Select
-
-        '    Console.WriteLine(std.Name)
-        '    Console.WriteLine()
-
-        '    Dim grade As Double = 0
-        '    Dim score As Double = 0
-
-        '    Dim t1 As DateTime
-        '    Dim t2 As DateTime
-
-        '    Dim ans
-        '    Dim ansStr
-
-        '    Dim isValidInput = Function(x)
-        '                           If Not Regex.IsMatch(x, "^[01]{4,4}$") Then
-        '                               Console.WriteLine(" PATRON DE RESPUESTA NO VALIDO, INTENTALO DE NUEVO.")
-        '                               Console.WriteLine()
-        '                               Return False
-        '                           End If
-        '                           Return True
-        '                       End Function
-
-        '    Do
-        '        grade = 0
-        '        t1 = Date.Now()
-        '        For Each preg In pdata
-        '            Do
-        '                Console.Write(" " & preg.Name & ControlChars.Tab & "  :   ")
-        '                ansStr = Console.ReadLine()
-        '            Loop While (Not isValidInput(ansStr))
-
-        '            ans = Convert.ToInt32(ansStr, 2)
-        '            grade += IIf(ans = preg.Answer, preg.Score, 0)
-        '            score = IIf(ans = preg.Answer, preg.Score, 0)
-        '            Console.WriteLine(" SCORE" & ControlChars.Tab & "  :   " & score)
-        '            Console.WriteLine()
-        '            Console.Write(ControlChars.Cr)
-        '        Next
-        '        t2 = Date.Now()
-        '        Console.WriteLine()
-        '        Console.WriteLine(std.Name)
-        '        Console.WriteLine("NOTA EXAMEN TEORICO: " & grade)
-        '        Console.Write("CONFIRMAR EVALUACION (SI/NO): ")
-        '    Loop While (Console.ReadLine().Trim().ToUpper() = "NO")
-
-        '    tlst.Add(t2.Subtract(t1).Seconds)
-        '    std.Grades.Item(Evaluation.EF) = grade
-        '    Using sw As New StreamWriter(path), writer As New JsonTextWriter(sw)
-        '        serializer.Serialize(writer, stdlst)
-        '    End Using
-        '    Console.WriteLine()
-        'Next
-
-        ''Dim tscant = tlst.Count
-        ''Dim tsmin = New TimeSpan(tlst.Min * )
-        ''Dim tsmax = New TimeSpan(0, 0, tlst.Max)
-        ''Dim tsprom = New TimeSpan(0, 0, tlst.Average)
-        ''Dim tstotal = New TimeSpan(0, 0, tlst.Sum)
-
-        ''Console.WriteLine()
-        ''Console.WriteLine()
-        ''Console.WriteLine("EXAMENES CORREGIDOS      :   " & tscant)
-        ''Console.WriteLine("TIEMPO EXAMEN MIN.       :   " & tsmin.Minutes & "m " & tsmin.Seconds & "s")
-        ''Console.WriteLine("TIEMPO EXAMEN MAX.       :   " & tsmax.Minutes & "m " & tsmax.Seconds & "s")
-        ''Console.WriteLine("TIEMPO EXAMEN PROM.      :   " & tsprom.Minutes & "m " & tsprom.Seconds & "s")
-        ''Console.WriteLine("TIEMPO TOTAL             :   " & tstotal.Minutes & "m " & tstotal.Seconds & "s")
-
-        'Console.WriteLine()
-        'Console.WriteLine("¡SILVIA ERES LO MAXIMO! :3")
 
 
-        'Dim lst = StudentIO.GetStudentsFromJson("sim162-lst-json.txt")
-        'Dim sb As New StringBuilder()
-        'Dim id, name, p2
+        'Console.WriteLine(p.ArrivalTime)
+        'Console.WriteLine(p.BurstTime)
+        'Console.WriteLine(p.CompletionTime)
+        'Console.WriteLine(p.TurnaroundTime)
 
-        'Using sw As StreamWriter = New StreamWriter("sim162-p2-xls.txt")
-        '    For Each std As Student In lst
-        '        id = std.Id
-        '        name = std.Name
-        '        p2 = Math.Round(std.Grades(Evaluation.P2), 2)
-        '        sb.AppendLine(String.Join(ControlChars.Tab, New String() {id, name, p2}))
-        '    Next
-        '    sw.Write(sb.ToString())
-        'End Using
+
+
 
         Return 0
     End Function
+
+
 
 End Module

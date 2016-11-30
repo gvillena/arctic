@@ -78,7 +78,7 @@
   <ItemGroup>
     <Compile Include="Cursos\Pweb162M.vb" />
     <Compile Include="Cursos\Sim162.vb" />
-    <Compile Include="Cursos\So162.vb" />
+    <Compile Include="Cursos\So162M.vb" />
     <Compile Include="Cursos\Visual162.vb" />
     <Compile Include="Enum.vb" />
     <Compile Include="Main.vb" />
@@ -98,11 +98,34 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Options.vb" />
-    <Compile Include="Sim162.vb" />
-    <Compile Include="So162.vb" />
+    <Compile Include="Sim162-ExFinal\Algoritmos.vb" />
+    <Compile Include="Sim162-ExFinal\Answer.vb" />
+    <Compile Include="Sim162-ExFinal\BurstTime.vb" />
+    <Compile Include="Sim162-ExFinal\ExFinal.vb" />
+    <Compile Include="Sim162-ExFinal\FirstComeFirstServed.vb" />
+    <Compile Include="Sim162-ExFinal\IStrategy.vb" />
+    <Compile Include="Sim162-ExFinal\Job.vb" />
+    <Compile Include="Sim162-ExFinal\MathUtil.vb" />
+    <Compile Include="Sim162-ExFinal\Pair.vb" />
+    <Compile Include="Sim162-ExFinal\Pairs.vb" />
+    <Compile Include="Sim162-ExFinal\Priority.vb" />
+    <Compile Include="Sim162-ExFinal\PriorityFirst.vb" />
+    <Compile Include="Sim162-ExFinal\Process.vb" />
+    <Compile Include="Sim162-ExFinal\ProcessCompletedEventARgs.vb" />
+    <Compile Include="Sim162-ExFinal\ProcessEventArgs.vb" />
+    <Compile Include="Sim162-ExFinal\ProcessLoad.vb" />
+    <Compile Include="Sim162-ExFinal\ProcessPreemptedEventArgs.vb" />
+    <Compile Include="Sim162-ExFinal\ProcessResumedEventArgs.vb" />
+    <Compile Include="Sim162-ExFinal\ProcessRunData.vb" />
+    <Compile Include="Sim162-ExFinal\ProcessStartedEventArgs.vb" />
+    <Compile Include="Sim162-ExFinal\RoundRobin.vb" />
+    <Compile Include="Sim162-ExFinal\Runner.vb" />
+    <Compile Include="Sim162-ExFinal\RunnerCompletedEventArgs.vb" />
+    <Compile Include="Sim162-ExFinal\RunnerStartedEventArgs.vb" />
+    <Compile Include="Sim162-ExFinal\ShortestJobFirst.vb" />
+    <Compile Include="Sim162-ExFinal\ShortestJobFirstExpert.vb" />
     <Compile Include="Student.vb" />
     <Compile Include="StudentIO.vb" />
-    <Compile Include="Visual162.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -137,6 +160,7 @@
     <Content Include="Files\visual162-lst.txt" />
     <Content Include="gist.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
