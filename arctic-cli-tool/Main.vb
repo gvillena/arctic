@@ -270,7 +270,7 @@ Module Main
         End If
 
         Console.WriteLine()
-        Console.WriteLine("EXAMEN FINAL SISTEMAS OPERATIVOS 2016-2")
+        Console.WriteLine("EXAMEN FINAL SO162")
         Console.WriteLine(exfinal.Name)
         Console.WriteLine()
         Console.WriteLine("INFORMACION DE TRABAJOS: ")
