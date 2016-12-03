@@ -77,9 +77,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cursos\Pweb162M.vb" />
-    <Compile Include="Cursos\Sim162.vb" />
+    <Compile Include="Cursos\Sim162M.vb" />
     <Compile Include="Cursos\So162M.vb" />
-    <Compile Include="Cursos\Visual162.vb" />
+    <Compile Include="Cursos\Visual162M.vb" />
     <Compile Include="Enum.vb" />
     <Compile Include="Main.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />

@@ -3,16 +3,16 @@ Imports System.Text
 Imports System.Text.RegularExpressions
 Imports Newtonsoft.Json
 
-''' <summary>
-''' Pweb162
-''' </summary>
-Public Class Pweb162M
+Public Class Visual162M
 
-
+    ''' <summary>
+    ''' 
+    ''' </summary>
+    ''' <returns></returns>
     Public Shared Function GetStudents() As List(Of Student)
 
         Dim lst As List(Of Student) = Nothing
-        Dim filepath As String = Path.Combine(My.Application.Info.DirectoryPath, "pweb162-lst-json.txt")
+        Dim filepath As String = Path.Combine(My.Application.Info.DirectoryPath, "visual162-lst-json.txt")
         Dim serializer As New JsonSerializer() With {.Formatting = Formatting.Indented}
 
         Using file As New StreamReader(filepath)
@@ -27,16 +27,19 @@ Public Class Pweb162M
         Return lst
     End Function
 
+    ''' <summary>
+    ''' 
+    ''' </summary>
     Public Shared Sub InitGradeMngr()
 
-        Console.WriteLine("-------------------------")
-        Console.WriteLine("- PLATAFORMA WEB 2016-2 -")
-        Console.WriteLine("-------------------------")
+        Console.WriteLine("-------------------")
+        Console.WriteLine("-- VISUAL 2016-2 --")
+        Console.WriteLine("-------------------")
         Console.WriteLine()
 
         Dim serializer As New JsonSerializer() With {.Formatting = Formatting.Indented}
-        Dim path As String = IO.Path.Combine(My.Application.Info.DirectoryPath, "pweb162-lst-json.txt")
-        Dim stdlst = Pweb162M.GetStudents()
+        Dim stdpath As String = IO.Path.Combine(My.Application.Info.DirectoryPath, "visual162-lst-json.txt")
+        Dim stdlst = Visual162M.GetStudents()
 
         Dim optn As String
 
@@ -69,12 +72,10 @@ Public Class Pweb162M
 
                 Dim sb As New StringBuilder()
                 sb.AppendLine()
-                sb.AppendFormat("  {0,-10} {1, -40} {2}", "Id", "Name", vbCrLf)
-
+                sb.AppendFormat("  {0,-2} {1,-10} {2, -40} {3}", "N", "Id", "Name", vbCrLf)
                 For Each std As Student In stdlst
-                    sb.AppendFormat("  {0,-10} {1, -40} {2}", std.Id, std.Name, vbCrLf)
+                    sb.AppendFormat("  {0,2} {1,-10} {2, -40} {3}", String.Format("{0:00}", stdlst.IndexOf(std) + 1), std.Id, std.Name, vbCrLf)
                 Next
-
                 Console.WriteLine(sb.ToString)
 
             Case "2" ' MOSTRAR LISTA + NOTAS
@@ -271,7 +272,7 @@ Public Class Pweb162M
                             Console.Write(" NOTA P1: ")
                             std.Grades.Item(Evaluation.P1) = Double.Parse(Console.ReadLine())
                             Console.WriteLine()
-                            Using sw As New StreamWriter(path), writer As New JsonTextWriter(sw)
+                            Using sw As New StreamWriter(stdpath), writer As New JsonTextWriter(sw)
                                 serializer.Serialize(writer, stdlst)
                             End Using
                         Next
@@ -298,7 +299,7 @@ Public Class Pweb162M
                             Console.Write(" NOTA EP: ")
                             std.Grades.Item(Evaluation.EP) = Double.Parse(Console.ReadLine())
                             Console.WriteLine()
-                            Using sw As New StreamWriter(path), writer As New JsonTextWriter(sw)
+                            Using sw As New StreamWriter(stdpath), writer As New JsonTextWriter(sw)
                                 serializer.Serialize(writer, stdlst)
                             End Using
                         Next
@@ -325,7 +326,7 @@ Public Class Pweb162M
                             Console.Write(" NOTA P2: ")
                             std.Grades.Item(Evaluation.P2) = Double.Parse(Console.ReadLine())
                             Console.WriteLine()
-                            Using sw As New StreamWriter(path), writer As New JsonTextWriter(sw)
+                            Using sw As New StreamWriter(stdpath), writer As New JsonTextWriter(sw)
                                 serializer.Serialize(writer, stdlst)
                             End Using
                         Next
@@ -352,7 +353,7 @@ Public Class Pweb162M
                             Console.Write(" NOTA EF: ")
                             std.Grades.Item(Evaluation.EF) = Double.Parse(Console.ReadLine())
                             Console.WriteLine()
-                            Using sw As New StreamWriter(path), writer As New JsonTextWriter(sw)
+                            Using sw As New StreamWriter(stdpath), writer As New JsonTextWriter(sw)
                                 serializer.Serialize(writer, stdlst)
                             End Using
                         Next
@@ -365,136 +366,24 @@ Public Class Pweb162M
 
     End Sub
 
-    Public Shared Sub SmartEval(eval As Evaluation)
-    End Sub
+    Public Shared Sub GenerateStudentDirectories()
 
-    Private Shared Sub SmartEvalP1()
-    End Sub
+        Dim lst = Visual162M.GetStudents()
+        Dim mdcpath = My.Computer.FileSystem.SpecialDirectories.MyDocuments
+        Dim crspath = Path.Combine(mdcpath, "Visual162")
+        Directory.CreateDirectory(crspath)
 
-    Private Shared Sub SmartEvalEP()
-    End Sub
+        Dim stpath As String
 
-    Private Shared Sub SmartEvalP2()
-    End Sub
-
-    Private Shared Sub SmartEvalEF()
-        Console.WriteLine("-----------------------------")
-        Console.WriteLine("- INGRESO NOTA EXAMEN FINAL -")
-        Console.WriteLine("-   SMART EVALUATION MODE   -")
-        Console.WriteLine("-----------------------------")
-        Console.WriteLine()
-        Console.WriteLine("HOLA")
-
-        Dim serializer As New JsonSerializer() With {.Formatting = Formatting.Indented}
-        Dim path As String = IO.Path.Combine(My.Application.Info.DirectoryPath, "sim162-lst-json.txt")
-        Dim stdlst = StudentIO.GetStudentsFromJson("sim162-lst-json.txt")
-        Dim pdata = StudentIO.GetQuestionData(Evaluation.EF)
-        Dim tlst As New List(Of Integer)
-
-        Dim optn As String
-        Dim isValidOption = Function(x)
-                                If Not Regex.IsMatch(x, "^[123]{1,1}$") Then
-                                    Console.WriteLine("OPCION NO VALIDA, INTENTALO DE NUEVO.")
-                                    Console.WriteLine()
-                                    Return False
-                                End If
-                                Return True
-                            End Function
-
-        Do
-            Console.WriteLine("MODO DE INGRESO")
-            Console.WriteLine()
-            Console.WriteLine(" [1] TODOS LOS EXAMENES POR LISTA DESDE EL PRINCIPIO.")
-            Console.WriteLine(" [2] TODOS LOS EXAMENES POR LISTA A PARTIR DEL INDICE INGRESADO.")
-            Console.WriteLine(" [3] SOLO UN EXAMEN SEGUN NUMERO DE ORDEN INGRESADO.")
-            Console.WriteLine()
-            Console.Write("INGRESA UNA OPCION: ")
-            optn = Console.ReadLine()
-        Loop Until (isValidOption(optn))
-
-        Dim ind As Integer = 0
-
-        Select Case optn
-            Case "1"
-                ' Nothing
-            Case "2"
-                Console.WriteLine()
-                Console.Write("INGRESAR RESPUESTAS A PARTIR DEL INDICE: ")
-                Integer.TryParse(Console.ReadLine(), ind)
-            Case "3"
-                Console.WriteLine()
-                Console.Write("INGRESAR RESPUESTAS DE ALUMNO CON NUMERO DE ORDEN: ")
-                Integer.TryParse(Console.ReadLine(), ind)
-        End Select
-
-        Console.WriteLine()
-
-        For Each std As Student In stdlst
-
-            Select Case optn
-                Case "1"
-                    ' Nothing
-                Case "2"
-                    If stdlst.IndexOf(std) < ind - 1 Then
-                        Continue For
-                    End If
-                Case "3"
-                    If stdlst.IndexOf(std) <> ind - 1 Then
-                        Continue For
-                    End If
-            End Select
-
-            Console.WriteLine(std.Name)
-            Console.WriteLine()
-
-            Dim grade As Double = 0
-            Dim score As Double = 0
-
-            Dim t1 As DateTime
-            Dim t2 As DateTime
-
-            Dim ans
-            Dim ansStr
-
-            Dim isValidInput = Function(x)
-                                   If Not Regex.IsMatch(x, "^[01]{4,4}$") Then
-                                       Console.WriteLine(" PATRON DE RESPUESTA NO VALIDO, INTENTALO DE NUEVO.")
-                                       Console.WriteLine()
-                                       Return False
-                                   End If
-                                   Return True
-                               End Function
-
-            Do
-                grade = 0
-                t1 = Date.Now()
-                For Each preg In pdata
-                    Do
-                        Console.Write(" " & preg.Name & ControlChars.Tab & "  :   ")
-                        ansStr = Console.ReadLine()
-                    Loop While (Not isValidInput(ansStr))
-
-                    ans = Convert.ToInt32(ansStr, 2)
-                    grade += IIf(ans = preg.Answer, preg.Score, 0)
-                    score = IIf(ans = preg.Answer, preg.Score, 0)
-                    Console.WriteLine(" SCORE" & ControlChars.Tab & "  :   " & score)
-                    Console.WriteLine()
-                    Console.Write(ControlChars.Cr)
-                Next
-                t2 = Date.Now()
-                Console.WriteLine()
-                Console.WriteLine(std.Name)
-                Console.WriteLine("NOTA EXAMEN TEORICO: " & grade)
-                Console.Write("CONFIRMAR EVALUACION (SI/NO): ")
-            Loop While (Console.ReadLine().Trim().ToUpper() = "NO")
-
-            tlst.Add(t2.Subtract(t1).Seconds)
-            std.Grades.Item(Evaluation.EF) = grade
-            Using sw As New StreamWriter(path), writer As New JsonTextWriter(sw)
-                serializer.Serialize(writer, stdlst)
-            End Using
-            Console.WriteLine()
+        For Each std As Student In lst
+            stpath = Path.Combine(crspath, std.Name)
+            Directory.CreateDirectory(stpath)
+            Directory.CreateDirectory(Path.Combine(stpath, "Practica 01"))
+            Directory.CreateDirectory(Path.Combine(stpath, "Examen Parcial"))
+            Directory.CreateDirectory(Path.Combine(stpath, "Practica 02"))
+            Directory.CreateDirectory(Path.Combine(stpath, "Examen Final"))
         Next
+
     End Sub
 
 End Class
