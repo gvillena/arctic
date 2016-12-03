@@ -1,0 +1,288 @@
+﻿[
+  {
+    "Id": "2012147738",
+    "Name": "AGUNA MANCILLA, BRAYAN MARLON",
+    "Grades": {
+      "P1": 0.0,
+      "EP": 0.0,
+      "P2": 0.0,
+      "EF": 0.0
+    },
+    "FinalGrade": 0.0
+  },
+  {
+    "Id": "2010150934",
+    "Name": "BARRANTES RODRIGUEZ, EDUARDO JENNER",
+    "Grades": {
+      "P1": 0.0,
+      "EP": 0.0,
+      "P2": 0.0,
+      "EF": 0.0
+    },
+    "FinalGrade": 0.0
+  },
+  {
+    "Id": "2011209572",
+    "Name": "BARRETO LEVIS, LUIS KEVIN",
+    "Grades": {
+      "P1": 0.0,
+      "EP": 0.0,
+      "P2": 0.0,
+      "EF": 0.0
+    },
+    "FinalGrade": 0.0
+  },
+  {
+    "Id": "2011150788",
+    "Name": "BUITRON GARCIA, DANIEL ENRIQUE",
+    "Grades": {
+      "P1": 0.0,
+      "EP": 0.0,
+      "P2": 0.0,
+      "EF": 0.0
+    },
+    "FinalGrade": 0.0
+  },
+  {
+    "Id": "2009116485",
+    "Name": "CAMACHO PACHECO, MIRIAN MILAGROS",
+    "Grades": {
+      "P1": 0.0,
+      "EP": 0.0,
+      "P2": 0.0,
+      "EF": 0.0
+    },
+    "FinalGrade": 0.0
+  },
+  {
+    "Id": "2003134044",
+    "Name": "CASAVERDE ZELA, MICHAEL JHONATAN",
+    "Grades": {
+      "P1": 0.0,
+      "EP": 0.0,
+      "P2": 0.0,
+      "EF": 0.0
+    },
+    "FinalGrade": 0.0
+  },
+  {
+    "Id": "2012148272",
+    "Name": "CASTILLO SAMANEZ, EVELING DAIBBI",
+    "Grades": {
+      "P1": 0.0,
+      "EP": 0.0,
+      "P2": 0.0,
+      "EF": 0.0
+    },
+    "FinalGrade": 0.0
+  },
+  {
+    "Id": "2010209969",
+    "Name": "CORDOVA RAMIREZ, AYTON ANDRE",
+    "Grades": {
+      "P1": 0.0,
+      "EP": 0.0,
+      "P2": 0.0,
+      "EF": 0.0
+    },
+    "FinalGrade": 0.0
+  },
+  {
+    "Id": "2012142368",
+    "Name": "CORNEJO DIAZ, FABIOLA MERCEDES",
+    "Grades": {
+      "P1": 0.0,
+      "EP": 0.0,
+      "P2": 0.0,
+      "EF": 0.0
+    },
+    "FinalGrade": 0.0
+  },
+  {
+    "Id": "2012148942",
+    "Name": "COSTA VIVES, FABIO ANTONIO",
+    "Grades": {
+      "P1": 0.0,
+      "EP": 0.0,
+      "P2": 0.0,
+      "EF": 0.0
+    },
+    "FinalGrade": 0.0
+  },
+  {
+    "Id": "2011169435",
+    "Name": "DELGADO HILARIO, DEYLA ETHEL",
+    "Grades": {
+      "P1": 0.0,
+      "EP": 0.0,
+      "P2": 0.0,
+      "EF": 0.0
+    },
+    "FinalGrade": 0.0
+  },
+  {
+    "Id": "2013106610",
+    "Name": "DIAZ RAYME, JUAN DIEGO LEONARDO",
+    "Grades": {
+      "P1": 0.0,
+      "EP": 0.0,
+      "P2": 0.0,
+      "EF": 0.0
+    },
+    "FinalGrade": 0.0
+  },
+  {
+    "Id": "2012148686",
+    "Name": "GARAY RAMIREZ, JAVIER ANIBAL",
+    "Grades": {
+      "P1": 0.0,
+      "EP": 0.0,
+      "P2": 0.0,
+      "EF": 0.0
+    },
+    "FinalGrade": 0.0
+  },
+  {
+    "Id": "2013106509",
+    "Name": "GONZALES ALMEYDA, MARIVI CAROLA",
+    "Grades": {
+      "P1": 0.0,
+      "EP": 0.0,
+      "P2": 0.0,
+      "EF": 0.0
+    },
+    "FinalGrade": 0.0
+  },
+  {
+    "Id": "2014113225",
+    "Name": "GONZALES SANTA CRUZ, ANGEL DANIEL",
+    "Grades": {
+      "P1": 0.0,
+      "EP": 0.0,
+      "P2": 0.0,
+      "EF": 0.0
+    },
+    "FinalGrade": 0.0
+  },
+  {
+    "Id": "2014113681",
+    "Name": "GUTIERREZ ZEGARRA, CYNTHIA ELVIRA",
+    "Grades": {
+      "P1": 0.0,
+      "EP": 0.0,
+      "P2": 0.0,
+      "EF": 0.0
+    },
+    "FinalGrade": 0.0
+  },
+  {
+    "Id": "2013207448",
+    "Name": "HERNANDEZ APARCANA, ANGIE PAOLA",
+    "Grades": {
+      "P1": 0.0,
+      "EP": 0.0,
+      "P2": 0.0,
+      "EF": 0.0
+    },
+    "FinalGrade": 0.0
+  },
+  {
+    "Id": "2013208873",
+    "Name": "LEZMA ROMERO, LUIS MIGUEL",
+    "Grades": {
+      "P1": 0.0,
+      "EP": 0.0,
+      "P2": 0.0,
+      "EF": 0.0
+    },
+    "FinalGrade": 0.0
+  },
+  {
+    "Id": "2014200526",
+    "Name": "NANQUEN ORTIZ, JOSE ENRIQUE",
+    "Grades": {
+      "P1": 0.0,
+      "EP": 0.0,
+      "P2": 0.0,
+      "EF": 0.0
+    },
+    "FinalGrade": 0.0
+  },
+  {
+    "Id": "2013207207",
+    "Name": "OGOSI HUAMAN, JUAN MIGUEL",
+    "Grades": {
+      "P1": 0.0,
+      "EP": 0.0,
+      "P2": 0.0,
+      "EF": 0.0
+    },
+    "FinalGrade": 0.0
+  },
+  {
+    "Id": "2013102468",
+    "Name": "ORDOÑEZ MOTTA, TERRY WILLIAMS",
+    "Grades": {
+      "P1": 0.0,
+      "EP": 0.0,
+      "P2": 0.0,
+      "EF": 0.0
+    },
+    "FinalGrade": 0.0
+  },
+  {
+    "Id": "2011154339",
+    "Name": "PALOMINO ZEGARRA, JOSEPH ALFRED",
+    "Grades": {
+      "P1": 0.0,
+      "EP": 0.0,
+      "P2": 0.0,
+      "EF": 0.0
+    },
+    "FinalGrade": 0.0
+  },
+  {
+    "Id": "2014200797",
+    "Name": "POCCO PAREDES, CLAUDIA",
+    "Grades": {
+      "P1": 0.0,
+      "EP": 0.0,
+      "P2": 0.0,
+      "EF": 0.0
+    },
+    "FinalGrade": 0.0
+  },
+  {
+    "Id": "2013107529",
+    "Name": "VASQUEZ CARRANZA, LUIS GUSTAVO",
+    "Grades": {
+      "P1": 0.0,
+      "EP": 0.0,
+      "P2": 0.0,
+      "EF": 0.0
+    },
+    "FinalGrade": 0.0
+  },
+  {
+    "Id": "2009203362",
+    "Name": "YARLEQUE ESQUECHE, JIMMY DANIEL",
+    "Grades": {
+      "P1": 0.0,
+      "EP": 0.0,
+      "P2": 0.0,
+      "EF": 0.0
+    },
+    "FinalGrade": 0.0
+  },
+  {
+    "Id": "2010210653",
+    "Name": "ZEVALLOS FRANCIA, SANTIAGO EMILIO",
+    "Grades": {
+      "P1": 0.0,
+      "EP": 0.0,
+      "P2": 0.0,
+      "EF": 0.0
+    },
+    "FinalGrade": 0.0
+  }
+]
