@@ -31,7 +31,43 @@ Module Main
     End Sub
 
     Function Pweb162(opts As Pweb162Options)
+
+        Console.WriteLine("--------------------------")
+        Console.WriteLine("| ARCTIC                 |")
+        Console.WriteLine("| PLATAFORMA WEB 2016-2  |")
+        Console.WriteLine("--------------------------")
+
+        Dim optn As String
+        Dim isValidOption = Function(x)
+                                If Not Regex.IsMatch(x, "^[12]{1,1}$") Then
+                                    Console.WriteLine("OPCION NO VALIDA, INTENTALO DE NUEVO.")
+                                    Console.WriteLine()
+                                    Return False
+                                End If
+                                Return True
+                            End Function
+
+        Do
+
+            Console.WriteLine()
+            Console.WriteLine("MENU PRINCIPAL")
+            Console.WriteLine()
+            Console.WriteLine("  [1] EVALUATION GRADE MANAGER")
+            Console.WriteLine("  [2] EVALUATION FILES MANAGER")
+            Console.WriteLine()
+            Console.Write("INGRESA UNA OPCION: ")
+            optn = Console.ReadLine()
+        Loop Until (isValidOption(optn))
+
+        Select Case optn
+            Case "1"
+                Pweb162M.InitGradeMngr()
+            Case "2"
+                Pweb162M.InitEvalFilesMngr()
+        End Select
+
         Return 0
+
     End Function
 
     Function Sim162(opts As Sim162Options)
@@ -241,7 +277,15 @@ Module Main
 
         Console.WriteLine()
         Console.WriteLine("Hello World!")
-        Visual162M.GenerateStudentDirectories()
+        Console.WriteLine()
+
+        Dim rurl As String = "https://files.slack.com/files-pri/T25T6JQNL-F3029KUCE/download/castilloalbujarmiguek.rar?pub_secret=73f27b975b"
+        Dim rname As String = IO.Path.GetFileName(rurl.Replace("https://", ""))
+
+        Console.WriteLine(rname.Split("?")(0))
+
+
+
 
         Return 0
     End Function

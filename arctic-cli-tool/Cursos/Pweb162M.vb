@@ -1,6 +1,7 @@
 ﻿Imports System.IO
 Imports System.Text
 Imports System.Text.RegularExpressions
+Imports LibGit2Sharp
 Imports Newtonsoft.Json
 
 ''' <summary>
@@ -170,16 +171,17 @@ Public Class Pweb162M
 
                 Dim sb As New StringBuilder()
                 sb.AppendLine()
-                sb.AppendFormat(" {0, -38}  {1, -4}  {2, -4}  {3, -4}  {4, -4}  {5, -4} {6}",
-                                  "Name", "P1", "EP", "P2", "EF", "PROM", vbCrLf)
+                sb.AppendFormat(" {0,2}  {1, -40}  {2, -5}  {3, -5}  {4, -5}  {5, -5}  {6, -5} {7}",
+                                  "N°", "NAME", "PRC01", "EXPRC", "PRC02", "EXFNL", "PROMD", vbCrLf)
                 For Each std As Student In stdlst
-                    sb.AppendFormat(" {0, -38}  {1, -4}  {2, -4}  {3, -4}  {4, -4}  {5, -4} {6}",
+                    sb.AppendFormat(" {0,2}  {1, -40}  {2, -5}  {3, -5}  {4, -5}  {5, -5}  {6, -5} {7}",
+                                      String.Format("{0:00}", stdlst.IndexOf(std) + 1),
                                       std.Name,
-                                      String.Format("{0:#0.00}", std.Grades(Evaluation.P1)),
-                                      String.Format("{0:#0.00}", std.Grades(Evaluation.EP)),
-                                      String.Format("{0:#0.00}", std.Grades(Evaluation.P2)),
-                                      String.Format("{0:#0.00}", std.Grades(Evaluation.EF)),
-                                      String.Format("{0:#0.00}", std.FinalGrade),
+                                      String.Format("{0:00.00}", std.Grades(Evaluation.P1)),
+                                      String.Format("{0:00.00}", std.Grades(Evaluation.EP)),
+                                      String.Format("{0:00.00}", std.Grades(Evaluation.P2)),
+                                      String.Format("{0:00.00}", std.Grades(Evaluation.EF)),
+                                      String.Format("{0:00.00}", std.FinalGrade),
                                       vbCrLf)
                 Next
                 Console.WriteLine(sb.ToString)
@@ -362,6 +364,195 @@ Public Class Pweb162M
         End Select
 
         Console.WriteLine()
+
+    End Sub
+
+    Public Shared Sub InitEvalFilesMngr()
+
+        Console.WriteLine("----------------------------")
+        Console.WriteLine("| PLATAFORMA WEB 2016-2    |")
+        Console.WriteLine("| EVALUATION FILES MANAGER |")
+        Console.WriteLine("----------------------------")
+        Console.WriteLine()
+
+        Dim serializer As New JsonSerializer() With {.Formatting = Formatting.Indented}
+        Dim path As String = IO.Path.Combine(My.Application.Info.DirectoryPath, "pweb162-lst-json.txt")
+        Dim stdlst = Pweb162M.GetStudents()
+
+        Dim optn As String
+
+        Dim isValidOption = Function(x)
+                                If Not Regex.IsMatch(x, "^[123]{1,1}$") Then
+                                    Console.WriteLine("OPCION NO VALIDA, INTENTALO DE NUEVO.")
+                                    Console.WriteLine()
+                                    Return False
+                                End If
+                                Return True
+                            End Function
+
+        Do
+            Console.WriteLine("MENU PRINCIPAL")
+            Console.WriteLine()
+            Console.WriteLine("  [1] MOSTRAR LISTA DE ESTUDIANTES")
+            Console.WriteLine("  [2] DESCARGAR ARCHIVOS DE EVALUACIONES")
+            Console.WriteLine("  [3] GENERAR DIRECTORIOS DE EVALUACIONES")
+            Console.WriteLine()
+            Console.Write("INGRESA UNA OPCION: ")
+            optn = Console.ReadLine()
+        Loop Until (isValidOption(optn))
+
+
+        Select Case optn
+
+            Case "1" ' MOSTRAR LISTA DE ESTUDIANTES
+                Dim sb As New StringBuilder()
+                sb.AppendLine()
+                sb.AppendFormat(" {0,-2} {1,-10} {2, -40} {3}", "N", "ID", "NAME", vbCrLf)
+                For Each std As Student In stdlst
+                    sb.AppendFormat(" {0,-2} {1,-10} {2, -40} {3}", String.Format("{0:00}", stdlst.IndexOf(std) + 1), std.Id, std.Name, vbCrLf)
+                Next
+                Console.WriteLine(sb.ToString)
+
+            Case "2" ' DESCARGAR ARCHIVOS DE EVALUACION
+
+                Dim ind As Integer
+                Console.WriteLine()
+                Console.Write("NUMERO DE ORDEN DE ESTUDIANTE: ")
+                Integer.TryParse(Console.ReadLine(), ind)
+
+                Dim std As Student = stdlst.Item(ind - 1)
+
+                Dim mdcpth As String = My.Computer.FileSystem.SpecialDirectories.MyDocuments
+                Dim crspth As String = IO.Path.Combine(mdcpth, "Pweb162")
+                Dim stdpth As String = IO.Path.Combine(crspth, std.Name)
+
+                Console.WriteLine()
+                Console.WriteLine(std.Name)
+
+                'Console.WriteLine()
+                'Console.WriteLine(" Directory : " & stdpth)
+                'Console.WriteLine(" Exist     : " & Directory.Exists(stdpth))
+
+                Dim inputEval As String
+                Dim isValidEval = Function(x)
+                                      If Not Regex.IsMatch(x, "^[1234]{1,1}$") Then
+                                          Console.WriteLine("OPCION NO VALIDA, INTENTALO DE NUEVO.")
+                                          Console.WriteLine()
+                                          Return False
+                                      End If
+                                      Return True
+                                  End Function
+                Do
+                    Console.WriteLine()
+                    Console.WriteLine("EVALUACIONES")
+                    Console.WriteLine()
+                    Console.WriteLine("  [1] PRACTICA 01")
+                    Console.WriteLine("  [2] EXAMEN PARCIAL")
+                    Console.WriteLine("  [3] PRACTICA 02")
+                    Console.WriteLine("  [4] EXAMEN FINAL")
+                    Console.WriteLine()
+                    Console.Write("INGRESA UNA OPCION: ")
+                    inputEval = Console.ReadLine()
+                Loop Until isValidEval(inputEval)
+
+                Dim evlpth As String = String.Empty
+                Dim evlstr As String = String.Empty
+
+                Select Case inputEval
+                    Case "1"
+                        evlpth = IO.Path.Combine(stdpth, "E1-PRC01")
+                    Case "2"
+                        evlpth = IO.Path.Combine(stdpth, "E2-EXPCL")
+                    Case "3"
+                        evlpth = IO.Path.Combine(stdpth, "E3-PRC02")
+                    Case "4"
+                        evlpth = IO.Path.Combine(stdpth, "E4-EXFNL")
+                End Select
+
+                Console.WriteLine()
+                Console.WriteLine(std.Name)
+                Console.WriteLine(IO.Path.GetFileName(evlpth))
+
+                'Console.WriteLine()
+                'Console.WriteLine(IO.Path.GetDirectoryName(evlpth))
+                'Console.WriteLine(evlpth)
+
+                Dim inputServer As String
+                Dim isValidServer = Function(x)
+                                        If Not Regex.IsMatch(x, "^[12]{1,1}$") Then
+                                            Console.WriteLine("OPCION NO VALIDA, INTENTALO DE NUEVO.")
+                                            Console.WriteLine()
+                                            Return False
+                                        End If
+                                        Return True
+                                    End Function
+                Do
+                    Console.WriteLine()
+                    Console.WriteLine("SERVIDOR DE DESCARGA")
+                    Console.WriteLine()
+                    Console.WriteLine("  [1] GITHUB")
+                    Console.WriteLine("  [2] SLACK")
+                    Console.WriteLine()
+                    Console.Write("INGRESA UNA OPCION: ")
+                    inputServer = Console.ReadLine()
+                Loop Until isValidEval(inputServer)
+
+                Console.WriteLine()
+
+                Select Case inputServer
+
+                    Case "1" ' GITHUB
+
+                        Dim rurl As String
+                        Console.Write(" URL: ")
+                        rurl = Console.ReadLine()
+                        Dim rname As String = IO.Path.GetFileNameWithoutExtension(rurl.Replace("https://", ""))
+                        Dim rpth As String = IO.Path.Combine(evlpth, rname)
+                        Directory.CreateDirectory(rpth)
+                        Repository.Clone(rurl, rpth)
+                        Diagnostics.Process.Start(evlpth)
+                        Console.WriteLine()
+
+                    Case "2" ' SLACK
+
+                        Dim rurl As String
+                        Console.Write(" URL: ")
+                        rurl = Console.ReadLine()
+                        Dim rname As String = IO.Path.GetFileName(rurl.Replace("https://", ""))
+                        Dim rpth As String = IO.Path.Combine(evlpth, rname.Split("?")(0))
+                        My.Computer.Network.DownloadFile(rurl, rpth)
+                        Diagnostics.Process.Start(evlpth)
+                        Console.WriteLine()
+
+                End Select
+
+            Case "3" ' GENERAR DIRECTORIOS DE EVALUACIONES
+                GenerateStudentDirectories()
+                Console.WriteLine()
+                Console.WriteLine(" ¡DIRECTORIOS CREADOS SATISFACTORIAMENTE!")
+                Console.WriteLine()
+        End Select
+
+
+    End Sub
+
+    Public Shared Sub GenerateStudentDirectories()
+
+        Dim lst = Pweb162M.GetStudents()
+        Dim mdcpath = My.Computer.FileSystem.SpecialDirectories.MyDocuments
+        Dim crspath = Path.Combine(mdcpath, "Pweb162")
+        Directory.CreateDirectory(crspath)
+
+        Dim stpath As String
+
+        For Each std As Student In lst
+            stpath = Path.Combine(crspath, std.Name)
+            Directory.CreateDirectory(stpath)
+            Directory.CreateDirectory(Path.Combine(stpath, "E1-PRC01"))
+            Directory.CreateDirectory(Path.Combine(stpath, "E2-EXPCL"))
+            Directory.CreateDirectory(Path.Combine(stpath, "E3-PRC02"))
+            Directory.CreateDirectory(Path.Combine(stpath, "E4-EXFNL"))
+        Next
 
     End Sub
 
