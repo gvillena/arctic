@@ -46,7 +46,7 @@ Public Class So162M
         Dim optn As String
 
         Dim isValidOption = Function(x)
-                                If Not Regex.IsMatch(x, "^[12345]{1,1}$") Then
+                                If Not Regex.IsMatch(x, "^[123456]{1,1}$") Then
                                     Console.WriteLine("OPCION NO VALIDA, INTENTALO DE NUEVO.")
                                     Console.WriteLine()
                                     Return False
@@ -62,6 +62,7 @@ Public Class So162M
             Console.WriteLine(" [3] MOSTRAR LISTA + PROMEDIO")
             Console.WriteLine(" [4] MOSTRAR LISTA + NOTAS + PROMEDIO")
             Console.WriteLine(" [5] INGRESAR NOTAS")
+            Console.WriteLine(" [6] EVALUAR / INGRESAR NOTA EF")
             Console.WriteLine()
             Console.Write("INGRESA UNA OPCION: ")
             optn = Console.ReadLine()
@@ -364,11 +365,174 @@ Public Class So162M
                         Next
                 End Select
 
+            Case "6"
+
+                Dim inputMode As String
+                Dim isValidMode = Function(x)
+                                      If Not Regex.IsMatch(x, "^[123]{1,1}$") Then
+                                          Console.WriteLine("OPCION NO VALIDA, INTENTALO DE NUEVO.")
+                                          Console.WriteLine()
+                                          Return False
+                                      End If
+                                      Return True
+                                  End Function
+
+                Do
+                    Console.WriteLine("MODO DE INGRESO")
+                    Console.WriteLine()
+                    Console.WriteLine(" [1] TODAS LAS NOTAS POR LISTA DESDE EL PRINCIPIO.")
+                    Console.WriteLine(" [2] TODAS LAS NOTAS POR LISTA A PARTIR DEL INDICE INGRESADO.")
+                    Console.WriteLine(" [3] SOLO UNA NOTA SEGUN NUMERO DE ORDEN INGRESADO.")
+                    Console.WriteLine()
+                    Console.Write("INGRESA UNA OPCION: ")
+                    inputMode = Console.ReadLine()
+                Loop Until (isValidOption(inputMode))
+
+                Dim ind As Integer = 0
+
+                Select Case inputMode
+                    Case "1"
+                        ' Nothing
+                    Case "2"
+                        Console.WriteLine()
+                        Console.Write("INGRESAR NOTAS A PARTIR DEL INDICE: ")
+                        Integer.TryParse(Console.ReadLine(), ind)
+                    Case "3"
+                        Console.WriteLine()
+                        Console.Write("INGRESAR NOTAS DE ALUMNO CON NUMERO DE ORDEN: ")
+                        Integer.TryParse(Console.ReadLine(), ind)
+                End Select
+
+                Console.WriteLine()
+
+
+                For Each std As Student In stdlst
+
+                    Select Case inputMode
+                        Case "1"
+                            ' Nothing
+                        Case "2"
+                            If stdlst.IndexOf(std) < ind - 1 Then
+                                Continue For
+                            End If
+                        Case "3"
+                            If stdlst.IndexOf(std) <> ind - 1 Then
+                                Continue For
+                            End If
+                    End Select
+
+                    Dim mdcpath = My.Computer.FileSystem.SpecialDirectories.MyDocuments
+                    Dim crspath = IO.Path.Combine(mdcpath, "So162")
+                    Dim stdpath = IO.Path.Combine(crspath, std.Name)
+                    Dim evlpath = IO.Path.Combine(stdpath, "E2-EXFNL")
+                    Dim jflpath = IO.Path.Combine(evlpath, "so162-exfinal-json.txt")
+
+                    Console.WriteLine()
+                    Console.WriteLine(std.Name)
+                    Console.WriteLine(Directory.Exists(evlpath))
+                    Console.WriteLine(File.Exists(jflpath))
+
+                    'Console.WriteLine(" " & std.Name)
+                    'Console.Write(" NOTA EP: ")
+                    'std.Grades.Item(Evaluation.EP) = Double.Parse(Console.ReadLine())
+                    'Console.WriteLine()
+                    'Using sw As New StreamWriter(path), writer As New JsonTextWriter(sw)
+                    '    serializer.Serialize(writer, stdlst)
+                    'End Using
+                Next
+
 
         End Select
 
         Console.WriteLine()
 
     End Sub
+
+    Public Shared Sub InitEvalFilesMngr()
+
+        Console.WriteLine(" -------------------------------")
+        Console.WriteLine("| SISTEMAS OPERATIVOS 2016-2    |")
+        Console.WriteLine("| EVALUATION FILES MANAGER      |")
+        Console.WriteLine(" -------------------------------")
+        Console.WriteLine()
+
+        Dim serializer As New JsonSerializer() With {.Formatting = Formatting.Indented}
+        Dim path As String = IO.Path.Combine(My.Application.Info.DirectoryPath, "so162-lst-json.txt")
+        Dim stdlst = So162M.GetStudents()
+
+        Dim optn As String
+
+        Dim isValidOption = Function(x)
+                                If Not Regex.IsMatch(x, "^[123]{1,1}$") Then
+                                    Console.WriteLine("OPCION NO VALIDA, INTENTALO DE NUEVO.")
+                                    Console.WriteLine()
+                                    Return False
+                                End If
+                                Return True
+                            End Function
+
+        Do
+            Console.WriteLine("MENU PRINCIPAL")
+            Console.WriteLine()
+            Console.WriteLine("  [1] MOSTRAR LISTA DE ESTUDIANTES")
+            Console.WriteLine("  [2] DESCARGAR ARCHIVOS DE EVALUACIONES")
+            Console.WriteLine("  [3] GENERAR DIRECTORIOS DE EVALUACIONES")
+            Console.WriteLine()
+            Console.Write("INGRESA UNA OPCION: ")
+            optn = Console.ReadLine()
+        Loop Until (isValidOption(optn))
+
+        Select Case optn
+
+            Case "1" ' MOSTRAR LISTA DE ESTUDIANTES
+            Case "2" ' DESCARGAR ARCHIVOS DE EVALUACION
+
+                Dim mdcpath = My.Computer.FileSystem.SpecialDirectories.MyDocuments
+                Dim crspath = IO.Path.Combine(mdcpath, "So162")
+
+                For Each std As Student In stdlst
+
+                    Console.WriteLine()
+                    Console.WriteLine(std.Name)
+                    Console.Write("DESCARGAR EVALUACIONES (SI/NO): ")
+
+                    If Console.ReadLine().Trim.Equals("NO", StringComparison.OrdinalIgnoreCase) Then
+                        Continue For
+                    End If
+
+                    Diagnostics.Process.Start(IO.Path.Combine(crspath, std.Name))
+
+                Next
+
+            Case "3" ' GENERAR DIRECTORIOS DE EVALUACIONES
+
+                GenerateStudentDirectories()
+                Console.WriteLine()
+                Console.WriteLine(" ¡DIRECTORIOS CREADOS SATISFACTORIAMENTE!")
+                Console.WriteLine()
+        End Select
+
+    End Sub
+
+    Public Shared Sub GenerateStudentDirectories()
+
+        Dim lst = So162M.GetStudents()
+        Dim mdcpath = My.Computer.FileSystem.SpecialDirectories.MyDocuments
+        Dim crspath = Path.Combine(mdcpath, "So162")
+        Directory.CreateDirectory(crspath)
+
+        Dim stpath As String
+
+        For Each std As Student In lst
+            stpath = Path.Combine(crspath, std.Name)
+            Directory.CreateDirectory(stpath)
+            Directory.CreateDirectory(Path.Combine(stpath, "E1-EXPCL"))
+            Directory.CreateDirectory(Path.Combine(stpath, "E2-EXFNL"))
+        Next
+
+    End Sub
+
+
+
 
 End Class

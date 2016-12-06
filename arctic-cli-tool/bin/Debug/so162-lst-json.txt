@@ -15,187 +15,187 @@
     "Name": "BARRIENTOS CORDOVA, KATIA YANINA",
     "Grades": {
       "P1": 4.5,
-      "EP": 0.0,
+      "EP": 12.0,
       "P2": 0.0,
       "EF": 0.0
     },
-    "FinalGrade": 1.125
+    "FinalGrade": 4.125
   },
   {
     "Id": "2012222621",
     "Name": "BUSTAMANTE VARGAS, PIERO ALEXANDER",
     "Grades": {
       "P1": 7.5,
-      "EP": 0.0,
+      "EP": 12.0,
       "P2": 0.0,
       "EF": 0.0
     },
-    "FinalGrade": 1.875
+    "FinalGrade": 4.875
   },
   {
     "Id": "2014112101",
     "Name": "CASTAÑEDA MENDOZA, JEAN PIERRE",
     "Grades": {
       "P1": 14.0,
-      "EP": 0.0,
+      "EP": 17.0,
       "P2": 0.0,
       "EF": 0.0
     },
-    "FinalGrade": 3.5
+    "FinalGrade": 7.75
   },
   {
     "Id": "2012117082",
     "Name": "CASTILLO ALBUJAR, MIGUEL KIYOSHI",
     "Grades": {
       "P1": 6.0,
-      "EP": 0.0,
+      "EP": 12.0,
       "P2": 0.0,
       "EF": 0.0
     },
-    "FinalGrade": 1.5
+    "FinalGrade": 4.5
   },
   {
     "Id": "2014200035",
     "Name": "CONDORI CABRERA, JOSELYN DANITZA",
     "Grades": {
       "P1": 5.5,
-      "EP": 0.0,
+      "EP": 18.0,
       "P2": 0.0,
       "EF": 0.0
     },
-    "FinalGrade": 1.375
+    "FinalGrade": 5.875
   },
   {
     "Id": "2013209431",
     "Name": "DAVALOS PALOMINO, BRANDON ALFREDO",
     "Grades": {
       "P1": 6.0,
-      "EP": 0.0,
+      "EP": 10.0,
       "P2": 0.0,
       "EF": 0.0
     },
-    "FinalGrade": 1.5
+    "FinalGrade": 4.0
   },
   {
     "Id": "2013209430",
     "Name": "DAVALOS PALOMINO, BRYAN ALFREDO",
     "Grades": {
       "P1": 4.0,
-      "EP": 0.0,
+      "EP": 10.0,
       "P2": 0.0,
       "EF": 0.0
     },
-    "FinalGrade": 1.0
+    "FinalGrade": 3.5
   },
   {
     "Id": "2013108025",
     "Name": "ESTEBAN RODRIGUEZ, MARICIELO ROSALI",
     "Grades": {
       "P1": 9.0,
-      "EP": 0.0,
+      "EP": 12.0,
       "P2": 0.0,
       "EF": 0.0
     },
-    "FinalGrade": 2.25
+    "FinalGrade": 5.25
   },
   {
     "Id": "2013143978",
     "Name": "FIESTAS EZCURRA, CESAR ALEJANDRO",
     "Grades": {
       "P1": 5.0,
-      "EP": 0.0,
+      "EP": 17.0,
       "P2": 0.0,
       "EF": 0.0
     },
-    "FinalGrade": 1.25
+    "FinalGrade": 5.5
   },
   {
     "Id": "2012147310",
     "Name": "GARAY GARCIA, IVAN ALEJANDRO",
     "Grades": {
       "P1": 0.0,
-      "EP": 0.0,
-      "P2": 0.0,
-      "EF": 0.0
-    },
-    "FinalGrade": 0.0
-  },
-  {
-    "Id": "2014200572",
-    "Name": "GARCIA RIVAS, RODRIGO JAVIER",
-    "Grades": {
-      "P1": 5.0,
-      "EP": 0.0,
-      "P2": 0.0,
-      "EF": 0.0
-    },
-    "FinalGrade": 1.25
-  },
-  {
-    "Id": "2014201910",
-    "Name": "IBAÑEZ BERROSPI, LUZ DE MARIA",
-    "Grades": {
-      "P1": 17.0,
-      "EP": 0.0,
+      "EP": 17.0,
       "P2": 0.0,
       "EF": 0.0
     },
     "FinalGrade": 4.25
   },
   {
+    "Id": "2014200572",
+    "Name": "GARCIA RIVAS, RODRIGO JAVIER",
+    "Grades": {
+      "P1": 5.0,
+      "EP": 14.0,
+      "P2": 0.0,
+      "EF": 0.0
+    },
+    "FinalGrade": 4.75
+  },
+  {
+    "Id": "2014201910",
+    "Name": "IBAÑEZ BERROSPI, LUZ DE MARIA",
+    "Grades": {
+      "P1": 17.0,
+      "EP": 19.0,
+      "P2": 0.0,
+      "EF": 0.0
+    },
+    "FinalGrade": 9.0
+  },
+  {
     "Id": "2014109436",
     "Name": "LIÑAN MONTALVO, SILVIA GIULIANA",
     "Grades": {
       "P1": 12.0,
-      "EP": 0.0,
+      "EP": 13.0,
       "P2": 0.0,
       "EF": 0.0
     },
-    "FinalGrade": 3.0
+    "FinalGrade": 6.25
   },
   {
     "Id": "2014111354",
     "Name": "MEDINA LALANGUI, JHONATAN ARTURO",
     "Grades": {
       "P1": 8.0,
-      "EP": 0.0,
+      "EP": 14.0,
       "P2": 0.0,
       "EF": 0.0
     },
-    "FinalGrade": 2.0
+    "FinalGrade": 5.5
   },
   {
     "Id": "0000000000",
     "Name": "ORELLANA POVIS, JOSETH",
     "Grades": {
       "P1": 6.0,
-      "EP": 0.0,
+      "EP": 8.0,
       "P2": 0.0,
       "EF": 0.0
     },
-    "FinalGrade": 1.5
+    "FinalGrade": 3.5
   },
   {
     "Id": "2014109242",
     "Name": "ORMEÑO YORI, KATHERINE",
     "Grades": {
       "P1": 8.0,
-      "EP": 0.0,
+      "EP": 16.0,
       "P2": 0.0,
       "EF": 0.0
     },
-    "FinalGrade": 2.0
+    "FinalGrade": 6.0
   },
   {
     "Id": "2013147029",
     "Name": "PAJARES RODRIGUEZ, ERIKA ANDREA",
     "Grades": {
       "P1": 13.5,
-      "EP": 0.0,
+      "EP": 11.0,
       "P2": 0.0,
       "EF": 0.0
     },
-    "FinalGrade": 3.375
+    "FinalGrade": 6.125
   },
   {
     "Id": "2014200797",
@@ -213,54 +213,54 @@
     "Name": "POLICK MEDINA, JOEL CARLOS",
     "Grades": {
       "P1": 10.5,
-      "EP": 0.0,
+      "EP": 13.0,
       "P2": 0.0,
       "EF": 0.0
     },
-    "FinalGrade": 2.625
+    "FinalGrade": 5.875
   },
   {
     "Id": "2008202969",
     "Name": "SALINAS CCOCHACHI, JORGE LUIS",
     "Grades": {
       "P1": 6.0,
-      "EP": 0.0,
+      "EP": 12.0,
       "P2": 0.0,
       "EF": 0.0
     },
-    "FinalGrade": 1.5
+    "FinalGrade": 4.5
   },
   {
     "Id": "2013147337",
     "Name": "VELARDE CUADROS, JESUS ANTONIO",
     "Grades": {
       "P1": 8.5,
-      "EP": 0.0,
+      "EP": 8.0,
       "P2": 0.0,
       "EF": 0.0
     },
-    "FinalGrade": 2.125
+    "FinalGrade": 4.125
   },
   {
     "Id": "1999106004",
     "Name": "VILLAVICENCIO MOROCHO, YURI OMAR",
     "Grades": {
       "P1": 9.0,
-      "EP": 0.0,
+      "EP": 17.0,
       "P2": 0.0,
       "EF": 0.0
     },
-    "FinalGrade": 2.25
+    "FinalGrade": 6.5
   },
   {
     "Id": "2012148482",
     "Name": "ZORRILLA SOSA, CRISTIAN PAOLO",
     "Grades": {
       "P1": 7.0,
-      "EP": 0.0,
+      "EP": 12.0,
       "P2": 0.0,
       "EF": 0.0
     },
-    "FinalGrade": 1.75
+    "FinalGrade": 4.75
   }
 ]

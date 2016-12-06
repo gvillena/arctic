@@ -196,6 +196,41 @@ Module Main
     End Function
 
     Function So162(opts As So162Options)
+
+        Console.WriteLine()
+        Console.WriteLine(" -----------------------------")
+        Console.WriteLine("| ARCTIC                      |")
+        Console.WriteLine("| SISTEMAS OPERATIVOS 2016-2  |")
+        Console.WriteLine(" -----------------------------")
+
+        Dim optn As String
+        Dim isValidOption = Function(x)
+                                If Not Regex.IsMatch(x, "^[12]{1,1}$") Then
+                                    Console.WriteLine("OPCION NO VALIDA, INTENTALO DE NUEVO.")
+                                    Console.WriteLine()
+                                    Return False
+                                End If
+                                Return True
+                            End Function
+
+        Do
+            Console.WriteLine()
+            Console.WriteLine("MENU PRINCIPAL")
+            Console.WriteLine()
+            Console.WriteLine("  [1] EVALUATION GRADE MANAGER")
+            Console.WriteLine("  [2] EVALUATION FILES MANAGER")
+            Console.WriteLine()
+            Console.Write("INGRESA UNA OPCION: ")
+            optn = Console.ReadLine()
+        Loop Until (isValidOption(optn))
+
+        Select Case optn
+            Case "1"
+                So162M.InitGradeMngr()
+            Case "2"
+                So162M.InitEvalFilesMngr()
+        End Select
+
         Return 0
     End Function
 
