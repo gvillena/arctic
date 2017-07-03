@@ -1,6 +1,7 @@
 ﻿Imports System.IO
 Imports System.Text
 Imports System.Text.RegularExpressions
+Imports LibGit2Sharp
 Imports Newtonsoft.Json
 
 Public Class Visual162M
@@ -44,7 +45,7 @@ Public Class Visual162M
         Dim optn As String
 
         Dim isValidOption = Function(x)
-                                If Not Regex.IsMatch(x, "^[12345]{1,1}$") Then
+                                If Not Regex.IsMatch(x, "^[123456]{1,1}$") Then
                                     Console.WriteLine("OPCION NO VALIDA, INTENTALO DE NUEVO.")
                                     Console.WriteLine()
                                     Return False
@@ -60,6 +61,7 @@ Public Class Visual162M
             Console.WriteLine(" [3] MOSTRAR LISTA + PROMEDIO")
             Console.WriteLine(" [4] MOSTRAR LISTA + NOTAS + PROMEDIO")
             Console.WriteLine(" [5] INGRESAR NOTAS")
+            Console.WriteLine(" [6] DESCARGAR EVALUACION")
             Console.WriteLine()
             Console.Write("INGRESA UNA OPCION: ")
             optn = Console.ReadLine()
@@ -239,9 +241,44 @@ Public Class Visual162M
                         ' Nothing
                     Case "2"
                         Console.WriteLine()
+                        Dim sb As New StringBuilder()
+                        sb.AppendLine()
+                        sb.AppendFormat(" {0,2}  {1, -40}  {2, -5}  {3, -5}  {4, -5}  {5, -5}  {6, -5} {7}",
+                                  "N°", "NAME", "PRC01", "EXPRC", "PRC02", "EXFNL", "PROMD", vbCrLf)
+                        For Each std As Student In stdlst
+                            sb.AppendFormat(" {0,2}  {1, -40}  {2, -5}  {3, -5}  {4, -5}  {5, -5}  {6, -5} {7}",
+                                      String.Format("{0:00}", stdlst.IndexOf(std) + 1),
+                                      std.Name,
+                                      String.Format("{0:00.00}", std.Grades(Evaluation.P1)),
+                                      String.Format("{0:00.00}", std.Grades(Evaluation.EP)),
+                                      String.Format("{0:00.00}", std.Grades(Evaluation.P2)),
+                                      String.Format("{0:00.00}", std.Grades(Evaluation.EF)),
+                                      String.Format("{0:00.00}", std.FinalGrade),
+                                      vbCrLf)
+                        Next
+                        Console.WriteLine(sb.ToString)
+                        Console.WriteLine()
                         Console.Write("INGRESAR NOTAS A PARTIR DEL INDICE: ")
                         Integer.TryParse(Console.ReadLine(), ind)
                     Case "3"
+
+                        Console.WriteLine()
+                        Dim sb As New StringBuilder()
+                        sb.AppendLine()
+                        sb.AppendFormat(" {0,2}  {1, -40}  {2, -5}  {3, -5}  {4, -5}  {5, -5}  {6, -5} {7}",
+                                  "N°", "NAME", "PRC01", "EXPRC", "PRC02", "EXFNL", "PROMD", vbCrLf)
+                        For Each std As Student In stdlst
+                            sb.AppendFormat(" {0,2}  {1, -40}  {2, -5}  {3, -5}  {4, -5}  {5, -5}  {6, -5} {7}",
+                                      String.Format("{0:00}", stdlst.IndexOf(std) + 1),
+                                      std.Name,
+                                      String.Format("{0:00.00}", std.Grades(Evaluation.P1)),
+                                      String.Format("{0:00.00}", std.Grades(Evaluation.EP)),
+                                      String.Format("{0:00.00}", std.Grades(Evaluation.P2)),
+                                      String.Format("{0:00.00}", std.Grades(Evaluation.EF)),
+                                      String.Format("{0:00.00}", std.FinalGrade),
+                                      vbCrLf)
+                        Next
+                        Console.WriteLine(sb.ToString)
                         Console.WriteLine()
                         Console.Write("INGRESAR NOTAS DE ALUMNO CON NUMERO DE ORDEN: ")
                         Integer.TryParse(Console.ReadLine(), ind)
@@ -359,6 +396,64 @@ Public Class Visual162M
                         Next
                 End Select
 
+            Case "6"
+
+                Console.WriteLine()
+                Dim sb As New StringBuilder()
+                sb.AppendLine()
+                sb.AppendFormat(" {0,2}  {1, -40}  {2, -5}  {3, -5}  {4, -5}  {5, -5}  {6, -5} {7}",
+                                  "N°", "NAME", "PRC01", "EXPRC", "PRC02", "EXFNL", "PROMD", vbCrLf)
+                For Each std As Student In stdlst
+                    sb.AppendFormat(" {0,2}  {1, -40}  {2, -5}  {3, -5}  {4, -5}  {5, -5}  {6, -5} {7}",
+                                      String.Format("{0:00}", stdlst.IndexOf(std) + 1),
+                                      std.Name,
+                                      String.Format("{0:00.00}", std.Grades(Evaluation.P1)),
+                                      String.Format("{0:00.00}", std.Grades(Evaluation.EP)),
+                                      String.Format("{0:00.00}", std.Grades(Evaluation.P2)),
+                                      String.Format("{0:00.00}", std.Grades(Evaluation.EF)),
+                                      String.Format("{0:00.00}", std.FinalGrade),
+                                      vbCrLf)
+                Next
+                Console.WriteLine(sb.ToString)
+                Console.WriteLine()
+
+                Dim ind As Integer
+                Console.Write("NUMERO DE INDICE DE ALUMNO: ")
+                Integer.TryParse(Console.ReadLine(), ind)
+
+                Dim inputEval As String
+                Dim isValidEval = Function(x)
+                                      If Not Regex.IsMatch(x, "^[1234]{1,1}$") Then
+                                          Console.WriteLine("OPCION NO VALIDA, INTENTALO DE NUEVO.")
+                                          Console.WriteLine()
+                                          Return False
+                                      End If
+                                      Return True
+                                  End Function
+                Do
+                    Console.WriteLine()
+                    Console.WriteLine("EVALUACIONES")
+                    Console.WriteLine()
+                    Console.WriteLine(" [1] PRACTICA 01")
+                    Console.WriteLine(" [2] EXAMEN PARCIAL")
+                    Console.WriteLine(" [3] PRACTICA 02")
+                    Console.WriteLine(" [4] EXAMEN FINAL")
+                    Console.WriteLine()
+                    Console.Write("INGRESA UNA OPCION: ")
+                    inputEval = Console.ReadLine()
+                Loop Until isValidEval(inputEval)
+
+                Dim rurl As String
+                Console.Write("GITHUB URL: ")
+                rurl = Console.ReadLine()
+
+                Dim rname As String = IO.Path.GetFileNameWithoutExtension(rurl.Replace("https://", ""))
+                Dim evalPath As New Dictionary(Of Integer, String) From {{1, "Practica 01"}, {2, "Examen Parcial"}, {3, "Practica 02"}, {4, "Examen Final"}}
+                Dim rpth As String = IO.Path.Combine(evalPath(Integer.Parse(inputEval)), rname)
+                Directory.CreateDirectory(rpth)
+                Repository.Clone(rurl, rpth)
+                Diagnostics.Process.Start(rpth)
+                Console.WriteLine()
 
         End Select
 

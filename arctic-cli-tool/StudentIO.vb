@@ -85,12 +85,12 @@ Public Class StudentIO
         Dim path As String = IO.Path.Combine(My.Application.Info.DirectoryPath, fileName)
         Dim lst As New List(Of Student)
 
-        Using MyReader As New Microsoft.VisualBasic.FileIO.TextFieldParser(path)
-
+        Using MyReader As New Microsoft.VisualBasic.FileIO.TextFieldParser(path, Encoding.Default)
 
             MyReader.TextFieldType = FileIO.FieldType.Delimited
             MyReader.SetDelimiters(vbTab)
-
+            MyReader.TrimWhiteSpace = True
+            MyReader.HasFieldsEnclosedInQuotes = True
             Dim currentRow As String()
             While Not MyReader.EndOfData
                 Try
@@ -104,6 +104,9 @@ Public Class StudentIO
                         .Grades.Add(Evaluation.P2, 0)
                         .Grades.Add(Evaluation.EF, 0)
                     End With
+
+
+
                     lst.Add(std)
                 Catch ex As Microsoft.VisualBasic.
                             FileIO.MalformedLineException
@@ -158,6 +161,18 @@ Public Class StudentIO
 
     End Function
 
+    Public Shared Sub GenerateJsonFileFromTextFile(ByVal textFileName As String, ByVal jsonFileName As String)
+        Console.WriteLine("adasd")
+        Dim serializer As New JsonSerializer() With {.Formatting = Formatting.Indented}
+        Dim path As String = IO.Path.Combine(My.Application.Info.DirectoryPath, jsonFileName)
+        Dim stdlst As List(Of Student) = StudentIO.GetStudentsFromTextFile(textFileName)
+        For Each std As Student In stdlst
+            Console.WriteLine(" {0} {1}", std.Id, std.Name)
+        Next
+        Using sw As New StreamWriter(path), writer As New JsonTextWriter(sw)
+            serializer.Serialize(writer, stdlst)
+        End Using
+    End Sub
 
     Public Shared Sub SetGrades(stdsFileName As String, testFileName As String)
 

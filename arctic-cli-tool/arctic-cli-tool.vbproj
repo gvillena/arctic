@@ -92,7 +92,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cursos\Pweb162M.vb" />
+    <Compile Include="Cursos\Se171M.vb" />
     <Compile Include="Cursos\Sim162M.vb" />
+    <Compile Include="Cursos\Sim171M.vb" />
     <Compile Include="Cursos\So162M.vb" />
     <Compile Include="Cursos\Visual162M.vb" />
     <Compile Include="Enum.vb" />

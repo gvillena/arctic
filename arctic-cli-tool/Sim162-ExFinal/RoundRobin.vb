@@ -45,6 +45,7 @@ Public Class RoundRobin
     ''' <param name="runner">Runner to use as execution enviroment.</param>
     Public Sub Execute(runner As Runner) Implements IStrategy.Execute
         _processLoad = New ProcessLoad(runner.ProcessLoad)
+        Dim _readyQueue2 As New Queue(Of Process)
         While _processLoad.Count > 0
             Dim validProcesses As List(Of Process) = _processLoad.Where(Function(x) x.ArrivalTime <= runner.Time).ToList()
             If validProcesses.Count > 0 Then
@@ -53,6 +54,9 @@ Public Class RoundRobin
                     _processLoad.Remove(p)
                 Next
                 While _readyQueue.Count > 0
+                    '_readyQueue.OrderBy(Function(x) x.Id)
+                    'Console.WriteLine(_readyQueue.Max(Function(x) x.Id))
+
                     Dim p As Process = _readyQueue.Dequeue()
                     Dim utilized As Integer = 0
                     While utilized < _quantum
@@ -60,6 +64,7 @@ Public Class RoundRobin
                         utilized += 1
                         For Each proc As Process In _processLoad.Where(Function(x) x.ArrivalTime <= runner.Time).ToList()
                             _readyQueue.Enqueue(proc)
+                            'Console.Write(" " & proc.Id)
                             _processLoad.Remove(proc)
                         Next
                         If Process.IsComplete(p) Then
@@ -69,9 +74,25 @@ Public Class RoundRobin
                     If Process.IsComplete(p) Then
                         runner.LogProcessMetrics(p)
                     Else
-                        _readyQueue.Enqueue(p)
+                        '_processLoad.Add(p)
+                        '_readyQueue.Enqueue(p)
+                        _readyQueue2.Enqueue(p)
                     End If
+                    'For Each item As Process In _readyQueue
+                    '    Console.Write(" " & item.Id)
+                    'Next
+                    'Console.WriteLine()
+                    'For Each item As Process In _processLoad
+                    '    Console.Write(" " & item.Id)
+                    'Next
+                    'Console.WriteLine()
+                    'For Each item As Process In validProcesses
+                    '    Console.Write(" " & item.Id)
+                    'Next
+                    'Console.WriteLine()
                 End While
+                _processLoad.AddRange(_readyQueue2.ToArray)
+                _readyQueue2.Clear()
             Else
                 runner.SkipIdleCpuTime()
             End If

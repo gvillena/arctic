@@ -1,36 +1,36 @@
-﻿[
+[
   {
     "Id": "2012147738",
     "Name": "AGUNA MANCILLA, BRAYAN MARLON",
     "Grades": {
-      "P1": 0.0,
-      "EP": 0.0,
-      "P2": 0.0,
-      "EF": 0.0
+      "P1": 19.0,
+      "EP": 17.0,
+      "P2": 17.0,
+      "EF": 18.0
     },
-    "FinalGrade": 0.0
+    "FinalGrade": 17.75
   },
   {
     "Id": "2010150934",
     "Name": "BARRANTES RODRIGUEZ, EDUARDO JENNER",
     "Grades": {
-      "P1": 0.0,
-      "EP": 0.0,
-      "P2": 0.0,
-      "EF": 0.0
+      "P1": 10.0,
+      "EP": 12.0,
+      "P2": 10.0,
+      "EF": 10.0
     },
-    "FinalGrade": 0.0
+    "FinalGrade": 10.5
   },
   {
     "Id": "2011209572",
     "Name": "BARRETO LEVIS, LUIS KEVIN",
     "Grades": {
-      "P1": 0.0,
-      "EP": 0.0,
-      "P2": 0.0,
-      "EF": 0.0
+      "P1": 13.0,
+      "EP": 9.0,
+      "P2": 12.0,
+      "EF": 10.0
     },
-    "FinalGrade": 0.0
+    "FinalGrade": 11.0
   },
   {
     "Id": "2011150788",
@@ -47,34 +47,34 @@
     "Id": "2009116485",
     "Name": "CAMACHO PACHECO, MIRIAN MILAGROS",
     "Grades": {
-      "P1": 0.0,
-      "EP": 0.0,
-      "P2": 0.0,
-      "EF": 0.0
+      "P1": 8.0,
+      "EP": 14.0,
+      "P2": 10.0,
+      "EF": 13.0
     },
-    "FinalGrade": 0.0
+    "FinalGrade": 11.25
   },
   {
     "Id": "2003134044",
     "Name": "CASAVERDE ZELA, MICHAEL JHONATAN",
     "Grades": {
-      "P1": 0.0,
-      "EP": 0.0,
-      "P2": 0.0,
-      "EF": 0.0
+      "P1": 8.0,
+      "EP": 14.0,
+      "P2": 16.0,
+      "EF": 10.0
     },
-    "FinalGrade": 0.0
+    "FinalGrade": 12.0
   },
   {
     "Id": "2012148272",
     "Name": "CASTILLO SAMANEZ, EVELING DAIBBI",
     "Grades": {
-      "P1": 0.0,
-      "EP": 0.0,
-      "P2": 0.0,
-      "EF": 0.0
+      "P1": 12.0,
+      "EP": 15.0,
+      "P2": 10.0,
+      "EF": 12.0
     },
-    "FinalGrade": 0.0
+    "FinalGrade": 12.25
   },
   {
     "Id": "2010209969",
@@ -91,155 +91,155 @@
     "Id": "2012142368",
     "Name": "CORNEJO DIAZ, FABIOLA MERCEDES",
     "Grades": {
-      "P1": 0.0,
-      "EP": 0.0,
-      "P2": 0.0,
-      "EF": 0.0
+      "P1": 16.0,
+      "EP": 15.0,
+      "P2": 14.0,
+      "EF": 16.0
     },
-    "FinalGrade": 0.0
+    "FinalGrade": 15.25
   },
   {
     "Id": "2012148942",
     "Name": "COSTA VIVES, FABIO ANTONIO",
     "Grades": {
-      "P1": 0.0,
-      "EP": 0.0,
-      "P2": 0.0,
-      "EF": 0.0
+      "P1": 19.0,
+      "EP": 12.0,
+      "P2": 8.0,
+      "EF": 14.0
     },
-    "FinalGrade": 0.0
+    "FinalGrade": 13.25
   },
   {
     "Id": "2011169435",
     "Name": "DELGADO HILARIO, DEYLA ETHEL",
     "Grades": {
-      "P1": 0.0,
-      "EP": 0.0,
-      "P2": 0.0,
-      "EF": 0.0
+      "P1": 12.0,
+      "EP": 15.0,
+      "P2": 10.0,
+      "EF": 14.0
     },
-    "FinalGrade": 0.0
+    "FinalGrade": 12.75
   },
   {
     "Id": "2013106610",
     "Name": "DIAZ RAYME, JUAN DIEGO LEONARDO",
     "Grades": {
-      "P1": 0.0,
-      "EP": 0.0,
-      "P2": 0.0,
-      "EF": 0.0
+      "P1": 12.0,
+      "EP": 12.0,
+      "P2": 10.0,
+      "EF": 12.0
     },
-    "FinalGrade": 0.0
+    "FinalGrade": 11.5
   },
   {
     "Id": "2012148686",
     "Name": "GARAY RAMIREZ, JAVIER ANIBAL",
     "Grades": {
-      "P1": 0.0,
-      "EP": 0.0,
-      "P2": 0.0,
-      "EF": 0.0
+      "P1": 10.0,
+      "EP": 15.0,
+      "P2": 8.0,
+      "EF": 8.0
     },
-    "FinalGrade": 0.0
+    "FinalGrade": 10.25
   },
   {
     "Id": "2013106509",
     "Name": "GONZALES ALMEYDA, MARIVI CAROLA",
     "Grades": {
-      "P1": 0.0,
-      "EP": 0.0,
-      "P2": 0.0,
-      "EF": 0.0
+      "P1": 13.0,
+      "EP": 12.0,
+      "P2": 12.0,
+      "EF": 16.0
     },
-    "FinalGrade": 0.0
+    "FinalGrade": 13.25
   },
   {
     "Id": "2014113225",
     "Name": "GONZALES SANTA CRUZ, ANGEL DANIEL",
     "Grades": {
-      "P1": 0.0,
-      "EP": 0.0,
-      "P2": 0.0,
-      "EF": 0.0
+      "P1": 10.0,
+      "EP": 16.0,
+      "P2": 19.0,
+      "EF": 8.0
     },
-    "FinalGrade": 0.0
+    "FinalGrade": 13.25
   },
   {
     "Id": "2014113681",
     "Name": "GUTIERREZ ZEGARRA, CYNTHIA ELVIRA",
     "Grades": {
-      "P1": 0.0,
-      "EP": 0.0,
-      "P2": 0.0,
-      "EF": 0.0
+      "P1": 12.0,
+      "EP": 14.0,
+      "P2": 12.0,
+      "EF": 16.0
     },
-    "FinalGrade": 0.0
+    "FinalGrade": 13.5
   },
   {
     "Id": "2013207448",
     "Name": "HERNANDEZ APARCANA, ANGIE PAOLA",
     "Grades": {
-      "P1": 0.0,
-      "EP": 0.0,
-      "P2": 0.0,
-      "EF": 0.0
+      "P1": 10.0,
+      "EP": 14.0,
+      "P2": 12.0,
+      "EF": 10.0
     },
-    "FinalGrade": 0.0
+    "FinalGrade": 11.5
   },
   {
     "Id": "2013208873",
     "Name": "LEZMA ROMERO, LUIS MIGUEL",
     "Grades": {
-      "P1": 0.0,
-      "EP": 0.0,
-      "P2": 0.0,
-      "EF": 0.0
+      "P1": 16.0,
+      "EP": 14.0,
+      "P2": 13.0,
+      "EF": 14.0
     },
-    "FinalGrade": 0.0
+    "FinalGrade": 14.25
   },
   {
     "Id": "2014200526",
     "Name": "NANQUEN ORTIZ, JOSE ENRIQUE",
     "Grades": {
-      "P1": 0.0,
-      "EP": 0.0,
-      "P2": 0.0,
-      "EF": 0.0
+      "P1": 16.0,
+      "EP": 17.0,
+      "P2": 12.0,
+      "EF": 14.0
     },
-    "FinalGrade": 0.0
+    "FinalGrade": 14.75
   },
   {
     "Id": "2013207207",
     "Name": "OGOSI HUAMAN, JUAN MIGUEL",
     "Grades": {
-      "P1": 0.0,
-      "EP": 0.0,
-      "P2": 0.0,
-      "EF": 0.0
+      "P1": 10.0,
+      "EP": 14.0,
+      "P2": 8.0,
+      "EF": 12.0
     },
-    "FinalGrade": 0.0
+    "FinalGrade": 11.0
   },
   {
     "Id": "2013102468",
     "Name": "ORDOÑEZ MOTTA, TERRY WILLIAMS",
     "Grades": {
-      "P1": 0.0,
-      "EP": 0.0,
-      "P2": 0.0,
-      "EF": 0.0
+      "P1": 8.0,
+      "EP": 12.0,
+      "P2": 10.0,
+      "EF": 10.0
     },
-    "FinalGrade": 0.0
+    "FinalGrade": 10.0
   },
   {
     "Id": "2011154339",
     "Name": "PALOMINO ZEGARRA, JOSEPH ALFRED",
     "Grades": {
-      "P1": 0.0,
-      "EP": 0.0,
-      "P2": 0.0,
-      "EF": 0.0
+      "P1": 12.0,
+      "EP": 13.0,
+      "P2": 12.0,
+      "EF": 11.0
     },
-    "FinalGrade": 0.0
+    "FinalGrade": 12.0
   },
   {
     "Id": "2014200797",
@@ -256,33 +256,33 @@
     "Id": "2013107529",
     "Name": "VASQUEZ CARRANZA, LUIS GUSTAVO",
     "Grades": {
-      "P1": 0.0,
-      "EP": 0.0,
-      "P2": 0.0,
-      "EF": 0.0
+      "P1": 10.0,
+      "EP": 14.0,
+      "P2": 8.0,
+      "EF": 12.0
     },
-    "FinalGrade": 0.0
+    "FinalGrade": 11.0
   },
   {
     "Id": "2009203362",
     "Name": "YARLEQUE ESQUECHE, JIMMY DANIEL",
     "Grades": {
-      "P1": 0.0,
-      "EP": 0.0,
-      "P2": 0.0,
-      "EF": 0.0
+      "P1": 16.0,
+      "EP": 14.0,
+      "P2": 12.0,
+      "EF": 12.0
     },
-    "FinalGrade": 0.0
+    "FinalGrade": 13.5
   },
   {
     "Id": "2010210653",
     "Name": "ZEVALLOS FRANCIA, SANTIAGO EMILIO",
     "Grades": {
-      "P1": 0.0,
-      "EP": 0.0,
-      "P2": 0.0,
-      "EF": 0.0
+      "P1": 14.0,
+      "EP": 17.0,
+      "P2": 13.0,
+      "EF": 17.0
     },
-    "FinalGrade": 0.0
+    "FinalGrade": 15.25
   }
 ]

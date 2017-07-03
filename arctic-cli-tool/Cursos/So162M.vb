@@ -410,7 +410,12 @@ Public Class So162M
 
                     Select Case inputMode
                         Case "1"
-                            ' Nothing
+
+                            Console.WriteLine(std.Name)
+                            Console.Write("EVALUAR (SI/NO): ")
+                            If Console.ReadLine.Trim.Equals("NO", StringComparison.OrdinalIgnoreCase) Then
+                                Continue For
+                            End If
                         Case "2"
                             If stdlst.IndexOf(std) < ind - 1 Then
                                 Continue For
@@ -432,13 +437,124 @@ Public Class So162M
                     Console.WriteLine(Directory.Exists(evlpath))
                     Console.WriteLine(File.Exists(jflpath))
 
-                    'Console.WriteLine(" " & std.Name)
-                    'Console.Write(" NOTA EP: ")
-                    'std.Grades.Item(Evaluation.EP) = Double.Parse(Console.ReadLine())
-                    'Console.WriteLine()
-                    'Using sw As New StreamWriter(path), writer As New JsonTextWriter(sw)
-                    '    serializer.Serialize(writer, stdlst)
-                    'End Using
+                    Dim evalFCFS As ExFinal = Nothing
+                    Dim evalRndRbn As ExFinal = Nothing
+
+                    Using file As New StreamReader(jflpath)
+                        evalFCFS = serializer.Deserialize(file, GetType(ExFinal))
+                    End Using
+
+                    Console.WriteLine()
+                    Console.WriteLine("EXAMEN FINAL SO162")
+                    Console.WriteLine(evalFCFS.Name)
+                    Console.WriteLine()
+                    Console.WriteLine("INFORMACION DE TRABAJOS: ")
+                    Console.WriteLine()
+                    Console.WriteLine(" {0,-7}   {1, -9}   {2, -10}", "TRABAJO", "CICLO CPU", "T. LLEGADA")
+                    For Each p As Process In evalFCFS.Jobs
+                        Console.WriteLine(" {0,-7}   {1, -9}   {2, -10}", p.Id, p.BurstTime, p.ArrivalTime)
+                    Next
+                    Console.WriteLine()
+
+                    Dim sb As New StringBuilder()
+
+                    Dim rFCFS As Runner
+
+                    Console.WriteLine("-----------------------")
+                    Console.WriteLine("FIRST COME FIRST SERVED")
+                    Console.WriteLine("-----------------------")
+                    Console.WriteLine()
+                    rFCFS = evalFCFS.RunSimulation(Algoritmo.FCFS)
+
+                    Dim rRndRbn As Runner
+
+                    Using file As New StreamReader(jflpath)
+                        evalRndRbn = serializer.Deserialize(file, GetType(ExFinal))
+                    End Using
+
+                    Console.WriteLine("ROUND ROBIN")
+                    Console.WriteLine()
+                    rRndRbn = evalRndRbn.RunSimulation(Algoritmo.RoundRobin)
+
+                    Console.WriteLine("FIRST COME FIRST SERVED")
+                    Console.WriteLine()
+                    Console.WriteLine("CPU UTIL: " & rFCFS.BusyCpuTime)
+
+                    sb.Clear()
+                    Console.WriteLine()
+                    Console.WriteLine("TIMEAROUND: " & rFCFS.GetTurnaroundTimeMean)
+                    For Each p As Process In rFCFS.ProcessLoad
+                        sb.Append("| " & String.Format("{0:00}", p.TurnaroundTime) & " ")
+                    Next
+                    Console.WriteLine(sb.ToString)
+
+                    sb.Clear()
+                    Console.WriteLine()
+                    Console.WriteLine("WAIT TIME: " & rFCFS.GetWaitTimeMean)
+                    For Each p As Process In rFCFS.ProcessLoad
+                        sb.Append("| " & String.Format("{0:00}", p.WaitTime) & " ")
+                    Next
+                    Console.WriteLine(sb.ToString)
+
+                    sb.Clear()
+                    Console.WriteLine()
+                    Console.WriteLine("RESPONSE TIME: " & rFCFS.GetResponseTimeMean)
+                    For Each p As Process In rFCFS.ProcessLoad
+                        sb.Append("| " & String.Format("{0:00}", p.ResponseTime) & " ")
+                    Next
+                    Console.WriteLine(sb.ToString)
+                    Console.WriteLine()
+
+                    Console.WriteLine("-----------")
+                    Console.WriteLine("ROUND ROBIN")
+                    Console.WriteLine("-----------")
+                    Console.WriteLine()
+                    Console.WriteLine("CPU UTIL: " & rRndRbn.BusyCpuTime)
+
+                    sb.Clear()
+                    Console.WriteLine()
+                    Console.WriteLine("TIMEAROUND: " & rRndRbn.GetTurnaroundTimeMean)
+                    For Each p As Process In rRndRbn.ProcessLoad
+                        sb.Append("| " & String.Format("{0:00}", p.TurnaroundTime) & " ")
+                    Next
+                    Console.WriteLine(sb.ToString)
+
+                    sb.Clear()
+                    Console.WriteLine()
+                    Console.WriteLine("WAIT TIME: " & rRndRbn.GetWaitTimeMean)
+                    For Each p As Process In rRndRbn.ProcessLoad
+                        sb.Append("| " & String.Format("{0:00}", p.WaitTime) & " ")
+                    Next
+                    Console.WriteLine(sb.ToString)
+
+                    sb.Clear()
+                    Console.WriteLine()
+                    Console.WriteLine("RESPONSE TIME: " & rRndRbn.GetResponseTimeMean)
+                    For Each p As Process In rRndRbn.ProcessLoad
+                        sb.Append("| " & String.Format("{0:00}", p.ResponseTime) & " ")
+                    Next
+                    Console.WriteLine(sb.ToString)
+                    Console.WriteLine()
+
+                    'Dim title As String = String.Empty
+                    'Dim algoritmo As Algoritmo = Algoritmo.Ninguno
+
+                    'Select Case optn
+                    '    Case "1" ' FCFS
+                    '        title = "FIRST COME FIRST SERVED"
+                    '        algoritmo = Algoritmo.FCFS
+                    '    Case "2" ' Round Robin
+                    '        title = "ROUND ROBIN (QTime: 5ms)"
+                    '        algoritmo = Algoritmo.RoundRobin
+                    'End Select
+
+                    Console.WriteLine(std.Name)
+                    Console.Write("NOTA EF: ")
+                    std.Grades.Item(Evaluation.EF) = Double.Parse(Console.ReadLine())
+                    Console.WriteLine()
+                    Using sw As New StreamWriter(path), writer As New JsonTextWriter(sw)
+                        serializer.Serialize(writer, stdlst)
+                    End Using
                 Next
 
 

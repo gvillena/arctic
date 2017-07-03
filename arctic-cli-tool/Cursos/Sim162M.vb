@@ -1,4 +1,6 @@
 ﻿Imports System.IO
+Imports System.Text
+Imports System.Text.RegularExpressions
 Imports Newtonsoft.Json
 
 
@@ -21,5 +23,551 @@ Public Class Sim162M
 
         Return lst
     End Function
+
+
+
+    Public Shared Sub InitGradeMngr()
+
+        Console.WriteLine(" ------------------------------ ")
+        Console.WriteLine("| SIMULACION DE SISTEMAS 2016-2 |")
+        Console.WriteLine("| EVALUATION GRADES MANAGER     |")
+        Console.WriteLine(" ------------------------------ ")
+        Console.WriteLine()
+
+        Dim serializer As New JsonSerializer() With {.Formatting = Formatting.Indented}
+        Dim path As String = IO.Path.Combine(My.Application.Info.DirectoryPath, "so162-lst-json.txt")
+        Dim stdlst = Sim162M.GetStudents()
+
+        Dim optn As String
+
+        Dim isValidOption = Function(x)
+                                If Not Regex.IsMatch(x, "^[123]{1,1}$") Then
+                                    Console.WriteLine("OPCION NO VALIDA, INTENTALO DE NUEVO.")
+                                    Console.WriteLine()
+                                    Return False
+                                End If
+                                Return True
+                            End Function
+
+        Do
+            Console.WriteLine("MENU PRINCIPAL")
+            Console.WriteLine()
+            Console.WriteLine(" [1] MOSTRAR LISTA + NOTAS + PROMEDIO")
+            Console.WriteLine(" [2] INGRESAR NOTAS")
+            Console.WriteLine(" [3] EVALUAR / INGRESAR NOTA EF")
+            Console.WriteLine()
+            Console.Write("INGRESA UNA OPCION: ")
+            optn = Console.ReadLine()
+        Loop Until (isValidOption(optn))
+
+        Select Case optn
+
+            Case "1" ' MOSTRAR LISTA + NOTAS + PROMEDIO
+
+                Dim sb As New StringBuilder()
+                sb.AppendLine()
+                sb.AppendFormat(" {0,2}  {1, -40}  {2, -5}  {3, -5}  {4, -5}  {5, -5}  {6, -5} {7}",
+                                  "N°", "NAME", "PRC01", "EXPRC", "PRC02", "EXFNL", "PROMD", vbCrLf)
+                For Each std As Student In stdlst
+                    sb.AppendFormat(" {0,2}  {1, -40}  {2, -5}  {3, -5}  {4, -5}  {5, -5}  {6, -5} {7}",
+                                      String.Format("{0:00}", stdlst.IndexOf(std) + 1),
+                                      std.Name,
+                                      String.Format("{0:00.00}", std.Grades(Evaluation.P1)),
+                                      String.Format("{0:00.00}", std.Grades(Evaluation.EP)),
+                                      String.Format("{0:00.00}", std.Grades(Evaluation.P2)),
+                                      String.Format("{0:00.00}", std.Grades(Evaluation.EF)),
+                                      String.Format("{0:00.00}", std.FinalGrade),
+                                      vbCrLf)
+                Next
+                Console.WriteLine(sb.ToString)
+
+            Case "2" ' INGRESAR NOTAS 
+
+                Dim inputMode As String
+                Do
+                    Console.WriteLine("MODO DE INGRESO")
+                    Console.WriteLine()
+                    Console.WriteLine(" [1] TODAS LAS NOTAS POR LISTA DESDE EL PRINCIPIO.")
+                    Console.WriteLine(" [2] TODAS LAS NOTAS POR LISTA A PARTIR DEL INDICE INGRESADO.")
+                    Console.WriteLine(" [3] SOLO UNA NOTA SEGUN NUMERO DE ORDEN INGRESADO.")
+                    Console.WriteLine()
+                    Console.Write("INGRESA UNA OPCION: ")
+                    inputMode = Console.ReadLine()
+                Loop Until (isValidOption(inputMode))
+
+                Dim ind As Integer = 0
+
+                Select Case inputMode
+                    Case "1"
+                        ' Nothing
+                    Case "2"
+                        Console.WriteLine()
+                        Console.Write("INGRESAR NOTAS A PARTIR DEL INDICE: ")
+                        Integer.TryParse(Console.ReadLine(), ind)
+                    Case "3"
+                        Console.WriteLine()
+
+                        Dim sb As New StringBuilder()
+                        sb.AppendLine()
+                        sb.AppendFormat(" {0,2}  {1, -40}  {2, -5}  {3, -5}  {4, -5}  {5, -5}  {6, -5} {7}",
+                                  "N°", "NAME", "PRC01", "EXPRC", "PRC02", "EXFNL", "PROMD", vbCrLf)
+                        For Each std As Student In stdlst
+                            sb.AppendFormat(" {0,2}  {1, -40}  {2, -5}  {3, -5}  {4, -5}  {5, -5}  {6, -5} {7}",
+                                      String.Format("{0:00}", stdlst.IndexOf(std) + 1),
+                                      std.Name,
+                                      String.Format("{0:00.00}", std.Grades(Evaluation.P1)),
+                                      String.Format("{0:00.00}", std.Grades(Evaluation.EP)),
+                                      String.Format("{0:00.00}", std.Grades(Evaluation.P2)),
+                                      String.Format("{0:00.00}", std.Grades(Evaluation.EF)),
+                                      String.Format("{0:00.00}", std.FinalGrade),
+                                      vbCrLf)
+                        Next
+                        Console.WriteLine(sb.ToString)
+
+                        Console.Write("INGRESAR NOTAS DE ALUMNO CON NUMERO DE ORDEN: ")
+                        Integer.TryParse(Console.ReadLine(), ind)
+
+                End Select
+
+                Console.WriteLine()
+
+                Dim inputEval As String
+                Dim isValidEval = Function(x)
+                                      If Not Regex.IsMatch(x, "^[1234]{1,1}$") Then
+                                          Console.WriteLine("OPCION NO VALIDA, INTENTALO DE NUEVO.")
+                                          Console.WriteLine()
+                                          Return False
+                                      End If
+                                      Return True
+                                  End Function
+                Do
+                    Console.WriteLine()
+                    Console.WriteLine("EVALUACIONES")
+                    Console.WriteLine()
+                    Console.WriteLine(" [1] PRACTICA 01")
+                    Console.WriteLine(" [2] EXAMEN PARCIAL")
+                    Console.WriteLine(" [3] PRACTICA 02")
+                    Console.WriteLine(" [4] EXAMEN FINAL")
+                    Console.WriteLine()
+                    Console.Write("INGRESA UNA OPCION: ")
+                    inputEval = Console.ReadLine()
+                Loop Until isValidEval(inputEval)
+
+                Console.WriteLine()
+
+                Dim isValidMode = Function(x)
+                                      If Not Regex.IsMatch(x, "^[123]{1,1}$") Then
+                                          Console.WriteLine("OPCION NO VALIDA, INTENTALO DE NUEVO.")
+                                          Console.WriteLine()
+                                          Return False
+                                      End If
+                                      Return True
+                                  End Function
+
+                Select Case inputEval
+
+                    Case "1"
+
+                        For Each std As Student In stdlst
+
+                            Select Case inputMode
+                                Case "1"
+                                    ' Nothing
+                                Case "2"
+                                    If stdlst.IndexOf(std) < ind - 1 Then
+                                        Continue For
+                                    End If
+                                Case "3"
+                                    If stdlst.IndexOf(std) <> ind - 1 Then
+                                        Continue For
+                                    End If
+                            End Select
+
+                            Console.WriteLine(" " & std.Name)
+                            Console.Write(" NOTA P1: ")
+                            std.Grades.Item(Evaluation.P1) = Double.Parse(Console.ReadLine())
+                            Console.WriteLine()
+                            Using sw As New StreamWriter(Path), writer As New JsonTextWriter(sw)
+                                serializer.Serialize(writer, stdlst)
+                            End Using
+                        Next
+
+                    Case "2"
+
+                        For Each std As Student In stdlst
+
+                            Select Case inputMode
+                                Case "1"
+                                    ' Nothing
+                                Case "2"
+                                    If stdlst.IndexOf(std) < ind - 1 Then
+                                        Continue For
+                                    End If
+                                Case "3"
+                                    If stdlst.IndexOf(std) <> ind - 1 Then
+                                        Continue For
+                                    End If
+                            End Select
+
+                            Console.WriteLine(" " & std.Name)
+                            Console.Write(" NOTA EP: ")
+                            std.Grades.Item(Evaluation.EP) = Double.Parse(Console.ReadLine())
+                            Console.WriteLine()
+                            Using sw As New StreamWriter(Path), writer As New JsonTextWriter(sw)
+                                serializer.Serialize(writer, stdlst)
+                            End Using
+                        Next
+
+                    Case "3"
+
+
+                        For Each std As Student In stdlst
+
+                            Select Case inputMode
+                                Case "1"
+                                    ' Nothing
+                                Case "2"
+                                    If stdlst.IndexOf(std) < ind - 1 Then
+                                        Continue For
+                                    End If
+                                Case "3"
+                                    If stdlst.IndexOf(std) <> ind - 1 Then
+                                        Continue For
+                                    End If
+                            End Select
+
+                            Console.WriteLine(" " & std.Name)
+                            Console.Write(" NOTA P2: ")
+                            std.Grades.Item(Evaluation.P2) = Double.Parse(Console.ReadLine())
+                            Console.WriteLine()
+                            Using sw As New StreamWriter(Path), writer As New JsonTextWriter(sw)
+                                serializer.Serialize(writer, stdlst)
+                            End Using
+                        Next
+
+                    Case "4"
+
+
+                        For Each std As Student In stdlst
+
+                            Select Case inputMode
+                                Case "1"
+                                    ' Nothing
+                                Case "2"
+                                    If stdlst.IndexOf(std) < ind - 1 Then
+                                        Continue For
+                                    End If
+                                Case "3"
+                                    If stdlst.IndexOf(std) <> ind - 1 Then
+                                        Continue For
+                                    End If
+                            End Select
+
+                            Console.WriteLine(" " & std.Name)
+                            Console.Write(" NOTA EF: ")
+                            std.Grades.Item(Evaluation.EF) = Double.Parse(Console.ReadLine())
+                            Console.WriteLine()
+                            Using sw As New StreamWriter(Path), writer As New JsonTextWriter(sw)
+                                serializer.Serialize(writer, stdlst)
+                            End Using
+                        Next
+                End Select
+
+            Case "6"
+
+                Dim inputMode As String
+                Dim isValidMode = Function(x)
+                                      If Not Regex.IsMatch(x, "^[123]{1,1}$") Then
+                                          Console.WriteLine("OPCION NO VALIDA, INTENTALO DE NUEVO.")
+                                          Console.WriteLine()
+                                          Return False
+                                      End If
+                                      Return True
+                                  End Function
+
+                Do
+                    Console.WriteLine("MODO DE INGRESO")
+                    Console.WriteLine()
+                    Console.WriteLine(" [1] TODAS LAS NOTAS POR LISTA DESDE EL PRINCIPIO.")
+                    Console.WriteLine(" [2] TODAS LAS NOTAS POR LISTA A PARTIR DEL INDICE INGRESADO.")
+                    Console.WriteLine(" [3] SOLO UNA NOTA SEGUN NUMERO DE ORDEN INGRESADO.")
+                    Console.WriteLine()
+                    Console.Write("INGRESA UNA OPCION: ")
+                    inputMode = Console.ReadLine()
+                Loop Until (isValidOption(inputMode))
+
+                Dim ind As Integer = 0
+
+                Select Case inputMode
+                    Case "1"
+                        ' Nothing
+                    Case "2"
+                        Console.WriteLine()
+                        Console.Write("INGRESAR NOTAS A PARTIR DEL INDICE: ")
+                        Integer.TryParse(Console.ReadLine(), ind)
+                    Case "3"
+                        Console.WriteLine()
+                        Console.Write("INGRESAR NOTAS DE ALUMNO CON NUMERO DE ORDEN: ")
+                        Integer.TryParse(Console.ReadLine(), ind)
+                End Select
+
+                Console.WriteLine()
+
+
+                For Each std As Student In stdlst
+
+                    Select Case inputMode
+                        Case "1"
+
+                            Console.WriteLine(std.Name)
+                            Console.Write("EVALUAR (SI/NO): ")
+                            If Console.ReadLine.Trim.Equals("NO", StringComparison.OrdinalIgnoreCase) Then
+                                Continue For
+                            End If
+                        Case "2"
+                            If stdlst.IndexOf(std) < ind - 1 Then
+                                Continue For
+                            End If
+                        Case "3"
+                            If stdlst.IndexOf(std) <> ind - 1 Then
+                                Continue For
+                            End If
+                    End Select
+
+                    Dim mdcpath = My.Computer.FileSystem.SpecialDirectories.MyDocuments
+                    Dim crspath = IO.Path.Combine(mdcpath, "So162")
+                    Dim stdpath = IO.Path.Combine(crspath, std.Name)
+                    Dim evlpath = IO.Path.Combine(stdpath, "E2-EXFNL")
+                    Dim jflpath = IO.Path.Combine(evlpath, "so162-exfinal-json.txt")
+
+                    Console.WriteLine()
+                    Console.WriteLine(std.Name)
+                    Console.WriteLine(Directory.Exists(evlpath))
+                    Console.WriteLine(File.Exists(jflpath))
+
+                    Dim evalFCFS As ExFinal = Nothing
+                    Dim evalRndRbn As ExFinal = Nothing
+
+                    Using file As New StreamReader(jflpath)
+                        evalFCFS = serializer.Deserialize(file, GetType(ExFinal))
+                    End Using
+
+                    Console.WriteLine()
+                    Console.WriteLine("EXAMEN FINAL SO162")
+                    Console.WriteLine(evalFCFS.Name)
+                    Console.WriteLine()
+                    Console.WriteLine("INFORMACION DE TRABAJOS: ")
+                    Console.WriteLine()
+                    Console.WriteLine(" {0,-7}   {1, -9}   {2, -10}", "TRABAJO", "CICLO CPU", "T. LLEGADA")
+                    For Each p As Process In evalFCFS.Jobs
+                        Console.WriteLine(" {0,-7}   {1, -9}   {2, -10}", p.Id, p.BurstTime, p.ArrivalTime)
+                    Next
+                    Console.WriteLine()
+
+                    Dim sb As New StringBuilder()
+
+                    Dim rFCFS As Runner
+
+                    Console.WriteLine("-----------------------")
+                    Console.WriteLine("FIRST COME FIRST SERVED")
+                    Console.WriteLine("-----------------------")
+                    Console.WriteLine()
+                    rFCFS = evalFCFS.RunSimulation(Algoritmo.FCFS)
+
+                    Dim rRndRbn As Runner
+
+                    Using file As New StreamReader(jflpath)
+                        evalRndRbn = serializer.Deserialize(file, GetType(ExFinal))
+                    End Using
+
+                    Console.WriteLine("ROUND ROBIN")
+                    Console.WriteLine()
+                    rRndRbn = evalRndRbn.RunSimulation(Algoritmo.RoundRobin)
+
+                    Console.WriteLine("FIRST COME FIRST SERVED")
+                    Console.WriteLine()
+                    Console.WriteLine("CPU UTIL: " & rFCFS.BusyCpuTime)
+
+                    sb.Clear()
+                    Console.WriteLine()
+                    Console.WriteLine("TIMEAROUND: " & rFCFS.GetTurnaroundTimeMean)
+                    For Each p As Process In rFCFS.ProcessLoad
+                        sb.Append("| " & String.Format("{0:00}", p.TurnaroundTime) & " ")
+                    Next
+                    Console.WriteLine(sb.ToString)
+
+                    sb.Clear()
+                    Console.WriteLine()
+                    Console.WriteLine("WAIT TIME: " & rFCFS.GetWaitTimeMean)
+                    For Each p As Process In rFCFS.ProcessLoad
+                        sb.Append("| " & String.Format("{0:00}", p.WaitTime) & " ")
+                    Next
+                    Console.WriteLine(sb.ToString)
+
+                    sb.Clear()
+                    Console.WriteLine()
+                    Console.WriteLine("RESPONSE TIME: " & rFCFS.GetResponseTimeMean)
+                    For Each p As Process In rFCFS.ProcessLoad
+                        sb.Append("| " & String.Format("{0:00}", p.ResponseTime) & " ")
+                    Next
+                    Console.WriteLine(sb.ToString)
+                    Console.WriteLine()
+
+                    Console.WriteLine("-----------")
+                    Console.WriteLine("ROUND ROBIN")
+                    Console.WriteLine("-----------")
+                    Console.WriteLine()
+                    Console.WriteLine("CPU UTIL: " & rRndRbn.BusyCpuTime)
+
+                    sb.Clear()
+                    Console.WriteLine()
+                    Console.WriteLine("TIMEAROUND: " & rRndRbn.GetTurnaroundTimeMean)
+                    For Each p As Process In rRndRbn.ProcessLoad
+                        sb.Append("| " & String.Format("{0:00}", p.TurnaroundTime) & " ")
+                    Next
+                    Console.WriteLine(sb.ToString)
+
+                    sb.Clear()
+                    Console.WriteLine()
+                    Console.WriteLine("WAIT TIME: " & rRndRbn.GetWaitTimeMean)
+                    For Each p As Process In rRndRbn.ProcessLoad
+                        sb.Append("| " & String.Format("{0:00}", p.WaitTime) & " ")
+                    Next
+                    Console.WriteLine(sb.ToString)
+
+                    sb.Clear()
+                    Console.WriteLine()
+                    Console.WriteLine("RESPONSE TIME: " & rRndRbn.GetResponseTimeMean)
+                    For Each p As Process In rRndRbn.ProcessLoad
+                        sb.Append("| " & String.Format("{0:00}", p.ResponseTime) & " ")
+                    Next
+                    Console.WriteLine(sb.ToString)
+                    Console.WriteLine()
+
+                    'Dim title As String = String.Empty
+                    'Dim algoritmo As Algoritmo = Algoritmo.Ninguno
+
+                    'Select Case optn
+                    '    Case "1" ' FCFS
+                    '        title = "FIRST COME FIRST SERVED"
+                    '        algoritmo = Algoritmo.FCFS
+                    '    Case "2" ' Round Robin
+                    '        title = "ROUND ROBIN (QTime: 5ms)"
+                    '        algoritmo = Algoritmo.RoundRobin
+                    'End Select
+
+                    Console.WriteLine(std.Name)
+                    Console.Write("NOTA EF: ")
+                    std.Grades.Item(Evaluation.EF) = Double.Parse(Console.ReadLine())
+                    Console.WriteLine()
+                    Using sw As New StreamWriter(Path), writer As New JsonTextWriter(sw)
+                        serializer.Serialize(writer, stdlst)
+                    End Using
+                Next
+
+            Case "7"
+
+                For Each std As Student In stdlst
+
+                    Console.WriteLine(std.Name)
+                    Console.Write(" NOTA EP: ")
+                    std.Grades.Item(Evaluation.EP) = Double.Parse(Console.ReadLine())
+                    Console.WriteLine()
+                    Using sw As New StreamWriter(path), writer As New JsonTextWriter(sw)
+                        serializer.Serialize(writer, stdlst)
+                    End Using
+
+                Next
+
+
+
+        End Select
+
+        Console.WriteLine()
+
+    End Sub
+
+
+    Public Shared Sub InitEvalFilesMngr()
+
+        Console.WriteLine(" -------------------------------")
+        Console.WriteLine("| SIMULACION DE SISTEMAS 2016-2 |")
+        Console.WriteLine("| EVALUATION FILES MANAGER      |")
+        Console.WriteLine(" -------------------------------")
+        Console.WriteLine()
+
+        Dim serializer As New JsonSerializer() With {.Formatting = Formatting.Indented}
+        Dim path As String = IO.Path.Combine(My.Application.Info.DirectoryPath, "sim162-lst-json.txt")
+        Dim stdlst = Sim162M.GetStudents()
+
+        Dim optn As String
+
+        Dim isValidOption = Function(x)
+                                If Not Regex.IsMatch(x, "^[123]{1,1}$") Then
+                                    Console.WriteLine("OPCION NO VALIDA, INTENTALO DE NUEVO.")
+                                    Console.WriteLine()
+                                    Return False
+                                End If
+                                Return True
+                            End Function
+
+        Do
+            Console.WriteLine("MENU PRINCIPAL")
+            Console.WriteLine()
+            Console.WriteLine("  [1] DESCARGAR ARCHIVOS DE EVALUACIONES")
+            Console.WriteLine("  [2] GENERAR DIRECTORIOS DE EVALUACIONES")
+            Console.WriteLine()
+            Console.Write("INGRESA UNA OPCION: ")
+            optn = Console.ReadLine()
+        Loop Until (isValidOption(optn))
+
+        Select Case optn
+
+            Case "1" ' DESCARGAR ARCHIVOS DE EVALUACION
+
+                Dim mdcpath = My.Computer.FileSystem.SpecialDirectories.MyDocuments
+                Dim crspath = IO.Path.Combine(mdcpath, "Sim162")
+
+                For Each std As Student In stdlst
+
+                    Console.WriteLine()
+                    Console.WriteLine(std.Name)
+                    Console.Write("DESCARGAR EVALUACIONES (SI/NO): ")
+
+                    If Console.ReadLine().Trim.Equals("NO", StringComparison.OrdinalIgnoreCase) Then
+                        Continue For
+                    End If
+
+                    Diagnostics.Process.Start(IO.Path.Combine(crspath, std.Name))
+
+                Next
+
+            Case "2" ' GENERAR DIRECTORIOS DE EVALUACIONES
+
+                GenerateStudentDirectories()
+                Console.WriteLine()
+                Console.WriteLine(" ¡DIRECTORIOS CREADOS SATISFACTORIAMENTE!")
+                Console.WriteLine()
+        End Select
+
+    End Sub
+
+    Public Shared Sub GenerateStudentDirectories()
+
+        Dim lst = Sim162M.GetStudents()
+        Dim mdcpath = My.Computer.FileSystem.SpecialDirectories.MyDocuments
+        Dim crspath = Path.Combine(mdcpath, "Sim162")
+        Directory.CreateDirectory(crspath)
+
+        Dim stpath As String
+
+        For Each std As Student In lst
+            stpath = Path.Combine(crspath, std.Name)
+            Directory.CreateDirectory(stpath)
+            Directory.CreateDirectory(Path.Combine(stpath, "E1-PRACT02"))
+            Directory.CreateDirectory(Path.Combine(stpath, "E2-EXFINAL"))
+        Next
+
+    End Sub
 
 End Class

@@ -134,6 +134,7 @@ Public Class ExFinal
         _runner = New Runner(Jobs, strategy, timeframe)
         _runner.Run()
 
+
         'Dim p1 As New Process(1, 10, 0) With {.Priority = Priority.Medium}
         'Dim p2 As New Process(2, 12, 2) With {.Priority = Priority.Medium}
         'Dim p3 As New Process(3, 3, 3) With {.Priority = Priority.Medium}
@@ -183,7 +184,7 @@ Public Class ExFinal
     Public Sub Process_Started(sender As Object, args As ProcessStartedEventArgs) Handles _runner.ProcessStarted
         Console.WriteLine(" EVENTO      : INICIO DE TRABAJO")
         Console.WriteLine(" TRABAJO     : " & args.Id)
-        Console.WriteLine(" TIEMPO      : " & _runner.Time)
+        Console.WriteLine(" TIEMPO      : " & args.StartTime)
         Console.WriteLine("")
     End Sub
 
@@ -191,7 +192,7 @@ Public Class ExFinal
     Private Sub _runner_ProcessCompleted(sender As Object, e As ProcessCompletedEventArgs) Handles _runner.ProcessCompleted
         Console.WriteLine(" EVENTO      : TRABAJO COMPLETADO")
         Console.WriteLine(" TRABAJO     : " & e.Id)
-        Console.WriteLine(" T. ACTUAL   : " & _runner.Time)
+        Console.WriteLine(" T. ACTUAL   : " & e.CompletionTime)
         Console.WriteLine("")
     End Sub
 

@@ -15,11 +15,11 @@
     "Name": "AROSTE ORE, EDDY SANTIAGO",
     "Grades": {
       "P1": 7.0,
-      "EP": 7.0,
+      "EP": 11.0,
       "P2": 10.0,
       "EF": 13.0
     },
-    "FinalGrade": 9.25
+    "FinalGrade": 10.25
   },
   {
     "Id": "2011176011",

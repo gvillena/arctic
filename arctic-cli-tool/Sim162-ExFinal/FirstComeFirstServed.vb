@@ -22,7 +22,7 @@ Public NotInheritable Class FirstComeFirstServed
 
         While readyQueue.Count > 0
             Dim process__1 As Process = readyQueue.Dequeue()
-            runner.SkipIdleCpuTime(process__1)
+            'runner.SkipIdleCpuTime(process__1)
 
             While Not Process.IsComplete(process__1)
                 runner.UtilizeCpu(process__1)

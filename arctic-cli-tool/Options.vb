@@ -34,6 +34,14 @@ End Class
 Class Sim162Options
 End Class
 
+<CommandLine.Verb("sim171", HelpText:="TODO")>
+Class Sim171Options
+End Class
+
+<CommandLine.Verb("se171", HelpText:="TODO")>
+Class Se171Options
+End Class
+
 <CommandLine.Verb("so162", HelpText:="TODO")>
 Class So162Options
 End Class
